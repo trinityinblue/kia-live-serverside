@@ -313,14 +313,14 @@ def writer():
                                 buffer = i * 5
                                 after = (original_start + timedelta(minutes=buffer))
                                 before = (original_start - timedelta(minutes=buffer))
-                                if not any((d['time'] == after and d[key] == in_key) for d in timings):
+                                if not any((d['time'] == after and d['key'] == in_key) for d in timings):
                                     timings.append({'time': after,
                                                     'key': in_key})
 
-                                if not any((d['time'] == before and d[key] == in_key) for d in timings):
+                                if not any((d['time'] == before and d['key'] == in_key) for d in timings):
                                     timings.append({'time': before,
                                                     'key': in_key})
-                            if not any((d['time'] == original_start and d[key] == in_key) for d in timings):
+                            if not any((d['time'] == original_start and d['key'] == in_key) for d in timings):
                                 timings.append({'time': original_start, 'key': in_key})
                         time.sleep(2)  # Sleep for 2 seconds after getting timing information
         update_timings_state.get()
