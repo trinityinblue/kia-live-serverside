@@ -1,7 +1,7 @@
 import asyncio
 import concurrent.futures
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # import boto3
 import os
@@ -11,6 +11,7 @@ from queue import Queue
 import json
 from flask import Flask
 import traceback
+
 
 # Read only constants
 with open('client_stops.json') as f:
@@ -59,7 +60,7 @@ update_timings_state.put(False)
 currently_waiting_on = Queue(1)  # Waiting on set, will always have only 1 object
 currently_waiting_on.put(set())
 state_queue = Queue(1)  # Will always have only 1 object
-state_queue.put({'last_update': datetime.utcnow(), 'data': {}})
+state_queue.put({'last_update': datetime.now().astimezone(), 'data': {}})
 updating = Queue(1)
 updating.put(set(routes.values()))
 timings_all = Queue(1)
@@ -175,10 +176,10 @@ def main_runner():
                                 if stop_covered_all == 1:
                                     break
                     old_full_data = state_queue.get().copy() if not state_queue.empty() else \
-                        {'last_update': datetime.utcnow(), 'data': {}}
+                        {'last_update': datetime.now().astimezone(), 'data': {}}
                     state_queue.put(old_full_data)
                     old_data = old_full_data['data']
-                    old_data[name] = {'pollDate': datetime.utcnow().isoformat()}
+                    old_data[name] = {'pollDate': datetime.now().astimezone().isoformat()}
                     for vehicle in vehicles.values():
                         last_known_stop = vehicle['lastKnownStop']
 
@@ -199,12 +200,12 @@ def main_runner():
         try:
             log_prefix = '[MAIN_UPDATE_LOOP]'
             # Main loop
-            data_snapshot = state_queue.get().copy() if not state_queue.empty() else {'last_update': datetime.utcnow(),
+            data_snapshot = state_queue.get().copy() if not state_queue.empty() else {'last_update': datetime.now().astimezone(),
                                                                                       'data': {}}
             state_queue.put(data_snapshot)
             limit = datetime.now()
             next_update = update_timings.get().copy() if not update_timings.empty() else {}  # {'time': datetime.now(), 'key': 1}
-            while data_snapshot['last_update'] < (datetime.utcnow() + timedelta(minutes=20)):
+            while data_snapshot['last_update'] < (datetime.now().astimezone() + timedelta(minutes=20)):
                 #
                 # Consume entire queue
                 if not q.empty():
@@ -233,7 +234,7 @@ def main_runner():
                 # Add next_update to updating list
                 update_state = update_timings_state.get()
                 update_timings_state.put(update_state)
-                if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.utcnow():
+                if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.now().astimezone():
                     print(f'{log_prefix} Adding {next_update["key"]} to updating_set')
                     updating_set = updating.get()
                     updating_set.add(next_update['key'])
@@ -264,7 +265,7 @@ def main_runner():
                 state_queue.put(data_snapshot)
                 if next_update == {}:
                     next_update = update_timings.get() if not update_timings.empty() else {}
-                elif next_update['time'] < datetime.now():
+                elif next_update['time'] < datetime.now().astimezone():
                     updating_set = updating.get()
                     updating_set.add(next_update['key'])
                     updating.put(updating_set)
