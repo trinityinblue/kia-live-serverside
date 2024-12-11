@@ -22,15 +22,16 @@ log_prefix = '[MAIN]'
 
 load_dotenv()
 # client = boto3.client('dynamodb')
-# dynamodb = boto3.resource('dynamodb')
+# dynamodb = boto3.resource('dynamodb')  # get aws information from env variable
 api_url = os.environ.get('BMTC_API_URL', 'https://bmtcmobileapistaging.amnex.com/WebAPI')
 end = 'END_LOOP_QUEUE'  # Terminator for threaded operations
-# Every day: query timetable for all KIA routes
+# Every day: query timetable for all KIA routes for next day
 # At the time of kia route start (and up to 25 mins prior / after at 5 min intervals):
 # query BMTC API for specific route every 30 seconds
 # If specific kia route is already being queried, no need to query duplicate
 # Query the route every 30 seconds till we stop getting data
-# ~Update received data to Amazon DB~ Serve fresh data  for clients to interact with
+# ~Update received data to Amazon DB~ Serve fresh data for clients to interact with via flask (Perhaps shift to a
+# different option should demand increase)
 with open('routes_children_ids.json') as f:
     ALL_ROUTES_CHILDREN_IDS = json.load(f)
 
@@ -244,12 +245,10 @@ def main_runner():
                     waiting_on = currently_waiting_on.get()
                     currently_waiting_on.put(waiting_on)
                     print(f'{log_prefix} Currently waiting on ', waiting_on)
-                    updating_set = updating.get()
+                    updating_set = updating.get().copy()
+                    # Due to pointers this is required, as we modify the set elsewhere
                     updating.put(updating_set)
-                    updating_se = updating_set.copy()  # Due to pointers this is required
-                    # print(f'{log_prefix} Currently updating {updating_se}')
-                    for r in updating_se:
-                        # print(f'{updating_se}')
+                    for r in updating_set:
                         if r not in waiting_on:
                             print(f'{log_prefix} Not waiting on {r}, querying')
                             try:
@@ -259,7 +258,6 @@ def main_runner():
                                 print(e)
                             finally:
                                 time.sleep(1)  # sleep for a second after calling update_loop_call
-                                # print(f'{updating_se}')
 
                 print(f'{log_prefix} Completed a round of calls')
                 data_snapshot = state_queue.get()  # Update our data snapshot
@@ -287,7 +285,6 @@ def writer():
         tomorrow_end = f'{tomorrow_str} 23:59'
         print(f'{log_prefix} Gathering timings for tomorrow from {tomorrow_start} to {tomorrow_end}')
         for key, route in routes_children.items():
-            time.sleep(2)
             print(f'{log_prefix} Querying {route} routeid')
             response = requests.post(f'{api_url}/GetTimetableByRouteid_v3', headers=request_headers,
                                      data=json.dumps({
@@ -319,7 +316,7 @@ def writer():
                                 timings.append({'time': (original_start - timedelta(minutes=buffer)),
                                                 'key': in_key})
                             timings.append({'time': original_start, 'key': in_key})
-        # print(f'{log_prefix} Resolved timings {timings}')
+                        time.sleep(2)  # Sleep for 2 seconds after getting timing information
         update_timings_state.get()
         update_timings_state.put(False)
         while not update_timings.empty():
