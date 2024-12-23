@@ -9,9 +9,8 @@ from dotenv import load_dotenv
 import requests
 from queue import Queue
 import json
-from flask import Flask
+from flask import Flask, jsonify
 import traceback
-
 
 # Read only constants
 with open('client_stops.json') as f:
@@ -59,6 +58,8 @@ update_timings_state = Queue(1)  # False means update_timings is currently being
 update_timings_state.put(False)
 currently_waiting_on = Queue(1)  # Waiting on set, will always have only 1 object
 currently_waiting_on.put(set())
+start_timings = Queue(1)  # Dict containing start timings, will always have only 1 dict object
+start_timings.put({})
 state_queue = Queue(1)  # Will always have only 1 object
 state_queue.put({'last_update': datetime.now().astimezone(), 'data': {}})
 updating = Queue(1)
@@ -135,6 +136,7 @@ def main_runner():
                                 if not vehicle_info['vehicleid'] in vehicles.keys():
                                     vehicles[vehicle_info['vehicleid']] = {
                                         'regno': vehicle_info['vehiclenumber'],
+                                        'destination': stop_data['to'],
                                         'lat': vehicle_info['centerlat'],
                                         'long': vehicle_info['centerlong'],
                                         'refresh': vehicle_info['lastrefreshon'],
@@ -200,8 +202,9 @@ def main_runner():
         try:
             log_prefix = '[MAIN_UPDATE_LOOP]'
             # Main loop
-            data_snapshot = state_queue.get().copy() if not state_queue.empty() else {'last_update': datetime.now().astimezone(),
-                                                                                      'data': {}}
+            data_snapshot = state_queue.get().copy() if not state_queue.empty() else {
+                'last_update': datetime.now().astimezone(),
+                'data': {}}
             state_queue.put(data_snapshot)
             limit = datetime.now()
             next_update = update_timings.get().copy() if not update_timings.empty() else {}  # {'time': datetime.now(), 'key': 1}
@@ -281,6 +284,8 @@ def writer():
     async def write_timings():  # Write timings to local queue every start of day
         log_prefix = '[WRITE_TIMINGS_LOOP]'
         timings = []
+        orig_timings = {}
+        legend = {}
         tomorrow_str = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
         tomorrow_start = f'{tomorrow_str} 00:01'
         tomorrow_end = f'{tomorrow_str} 23:59'
@@ -315,24 +320,42 @@ def writer():
                                 after = (original_start + timedelta(minutes=buffer))
                                 before = (original_start - timedelta(minutes=buffer))
                                 if not any((d['time'] == after and d['key'] == in_key) for d in timings):
+                                    if (after - timedelta(days=1)) > datetime.now().astimezone():
+                                        timings.append({'time': (after - timedelta(days=1)), 'key': in_key})
                                     timings.append({'time': after,
                                                     'key': in_key})
 
                                 if not any((d['time'] == before and d['key'] == in_key) for d in timings):
+                                    if (before - timedelta(days=1)) > datetime.now().astimezone():
+                                        timings.append({'time': (before - timedelta(days=1)), 'key': in_key})
                                     timings.append({'time': before,
                                                     'key': in_key})
                             if not any((d['time'] == original_start and d['key'] == in_key) for d in timings):
+                                if (original_start - timedelta(days=1)) > datetime.now().astimezone():
+                                    timings.append({'time': (original_start - timedelta(days=1)), 'key': in_key})
                                 timings.append({'time': original_start, 'key': in_key})
+                            if key not in orig_timings.keys():
+                                orig_timings[key] = []
+                            if (original_start - timedelta(days=1)) > datetime.now().astimezone():
+                                orig_timings[key].append(original_start)
+                            orig_timings[key].append(original_start)
+                            if key not in legend.keys():
+                                legend[key] = route
                         time.sleep(2)  # Sleep for 2 seconds after getting timing information
         update_timings_state.get()
         update_timings_state.put(False)
         while not update_timings.empty():
             update_timings.get()
         [update_timings.put(t) for t in timings]
-        timings_all.get()
-        timings_all.put(timings)
         update_timings_state.get()
         update_timings_state.put(True)
+        timings_all.get()
+        timings_all.put(timings)
+        start_timings.get()
+        start_timings.put({
+            "legend": legend,
+            "data": orig_timings
+        })
 
         pass
 
@@ -374,9 +397,25 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
         if not current_state == {}:
             print(f'{log_prefix} Returning data value')
             state_queue.put(current_state)
-            return current_state['data']
+            response = jsonify(current_state['data'])
+            response.headers.add("Access-Control-Allow-Origin", "*")
+            return response
         print(f'{log_prefix} Returning default data')
-        return current_state
+        response = jsonify(current_state)
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
+
+
+    @app.route('/times/')
+    def times():
+        log_prefix = '[API_TIMES_CALL]'
+        print(f'{log_prefix} Received API call')
+        start_times = start_timings.get().copy()
+        start_timings.put(start_times)
+        print(f'{log_prefix} Received start times, returning object')
+        response = jsonify(start_times)
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
 
 
     @app.route('/info/')
@@ -397,8 +436,11 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
             'routes_parent': routes,
             'routes_children': routes_children
         }
+
         print(f'{log_prefix} Returning info object')
-        return info
+        response = jsonify(info)
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
 
 
-    app.run()
+    app.run(port=59955)

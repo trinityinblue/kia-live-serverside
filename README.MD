@@ -2,10 +2,10 @@
 #### Takes data from BMTC APIs to provide a semi-live data feed
 
 - ### Setup:
-This is expected to work on an AWS EC2 Instance, however it can run anywhere. To set it up first install all dependents
+This is expected to be functioning on an AWS EC2 Instance, however it can technically run anywhere. To set it up first install all dependents
 via the poetry package manager `poetry install` command. Once installed you can simply run it via 
 `poetry run python main.py`. To expose it you can use an nginx reverse proxy, or alternatively modify the source code to
-expose flask properly.
+expose flask properly. It will run on port `59955` to avoid conflicts with other services.
 
 - ### Data:
 Data is returned in the following JSON format
@@ -25,7 +25,8 @@ Data is returned in the following JSON format
         "regno": "<REGISTRATION_NUMBER>",
         "routeno": "<ROUTE_NO_WITH_DIRECTION>",
         "stopCovered": <INTERNAL_VAL>,
-        "stopCoveredOriginal": <INTERNAL_VAL>
+        "stopCoveredOriginal": <INTERNAL_VAL>,
+        "destination": "<STOP_NAME>"
       }
     ]
   },
@@ -50,7 +51,8 @@ So a sample would look like:
         "regno": "KA57F1809",
         "routeno": "KIA-5D UP",
         "stopCovered": 0,
-        "stopCoveredOriginal": 1
+        "stopCoveredOriginal": 1,
+        "destination": "Kempegowda International Airport"
       }
     ],
     "Udipalya": [
@@ -66,7 +68,8 @@ So a sample would look like:
         "regno": "KA57F1788",
         "routeno": "KIA-5D DOWN",
         "stopCovered": 0,
-        "stopCoveredOriginal": 1
+        "stopCoveredOriginal": 1,
+        "destination": "Brigade Meadows Kanakapura Road"
       }
     ],
     "pollDate": "2024-12-11T05:00:36.716276"
@@ -74,4 +77,5 @@ So a sample would look like:
 }
 ```
 You will notice in the above example that even though it is for `KIA-5D DOWN` there is a value with the direction `UP`
-This is because of inaccurate data received from BMTC API.
+This is because of inaccurate data received from BMTC API. It is better to track whether it is `UP` or `DOWN` via the 
+destination value
