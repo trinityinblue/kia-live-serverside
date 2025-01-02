@@ -64,6 +64,8 @@ state_queue = Queue(1)  # Will always have only 1 object
 state_queue.put({'last_update': datetime.now().astimezone(), 'data': {}})
 updating = Queue(1)
 updating.put(set(routes.values()))
+suspect = Queue(1)
+suspect.put(set())
 timings_all = Queue(1)
 timings_all.put([])
 print(f'{log_prefix} Starting off with {routes.values()}')
@@ -103,9 +105,26 @@ def updater(r):
                 and len(response['up']['data']) == 0
                 and len(response['down']['data']) == 0
         ):
-            updating_s = updating.get()
-            updating_s.remove(r)
-            updating.put(updating_s)
+            print(f'{log_prefix} Suspected empty return for {r}', response)
+            suspect_s = suspect.get()
+            if r in suspect_s:
+                print(f'{log_prefix} Removed value {r} from updating')
+                updating_s = updating.get()
+                updating_s.remove(r)
+                updating.put(updating_s)
+                suspect_s.remove(r)
+                suspect.put(suspect_s)
+            else:
+                print(f'{log_prefix} Suspect added to suspicion')
+                suspect_s.add(r)
+                suspect.put(suspect_s)
+        else:
+            print(f'{log_prefix} Removed value {r} from suspicion')
+            suspect_s = suspect.get()
+            if r in suspect_s:
+                suspect_s.remove(r)
+            suspect.put(suspect_s)
+
         q.put(response)
         print(f'{log_prefix} put response for {r} in queue')
 
@@ -209,69 +228,73 @@ def main_runner():
             limit = datetime.now()
             next_update = update_timings.get().copy() if not update_timings.empty() else {}  # {'time': datetime.now(), 'key': 1}
             while data_snapshot['last_update'] < (datetime.now().astimezone() + timedelta(minutes=20)):
-                #
-                # Consume entire queue
-                if not q.empty():
-                    print(f'{log_prefix} Consuming all elements in queue')
-                    while not q.empty():
-                        try:
-                            val = q.get()
-                            if val is end:
-                                print(f'{log_prefix} Received end command via queue')
-                                if not state_queue.empty():
-                                    state_queue.get()
-                                state_queue.put(end)
-                                return
-                            format_and_consume(val)
-                        except Exception as e:
-                            print(f'Received error {e}')
-                #
-                # Run query loop only once every 30 seconds, don't want to overload bmtc servers
-                if limit > datetime.now():
-                    print(f'{log_prefix} Have additional time before limit to query API is exhausted, sleeping.')
-                    time.sleep((limit - datetime.now()).total_seconds())
-                    print(f'{log_prefix} Now awake to continue querying')
-                limit = datetime.now() + timedelta(seconds=30)
-                print(f'{log_prefix} Set query api limit for 30 seconds after now')
-                #
-                # Add next_update to updating list
-                update_state = update_timings_state.get()
-                update_timings_state.put(update_state)
-                if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.now().astimezone():
-                    print(f'{log_prefix} Adding {next_update["key"]} to updating_set')
-                    updating_set = updating.get()
-                    updating_set.add(next_update['key'])
-                    updating.put(updating_set)
-                    next_update = update_timings.get() if not update_timings.empty() else {}
-                #
-                # Query API with latest live data
-                with concurrent.futures.ThreadPoolExecutor() as update_executor:
-                    waiting_on = currently_waiting_on.get()
-                    currently_waiting_on.put(waiting_on)
-                    print(f'{log_prefix} Currently waiting on ', waiting_on)
-                    updating_set = updating.get()
-                    # Due to pointers this is required, as we modify the set elsewhere
-                    updating.put(updating_set.copy())
-                    for r in updating_set:
-                        if r not in waiting_on:
-                            print(f'{log_prefix} Not waiting on {r}, querying')
+                try:
+                    #
+                    # Consume entire queue
+                    if not q.empty():
+                        print(f'{log_prefix} Consuming all elements in queue')
+                        while not q.empty():
                             try:
-                                update_executor.submit(updater, r)
+                                val = q.get()
+                                if val is end:
+                                    print(f'{log_prefix} Received end command via queue')
+                                    if not state_queue.empty():
+                                        state_queue.get()
+                                    state_queue.put(end)
+                                    return
+                                format_and_consume(val)
                             except Exception as e:
-                                print(f'{log_prefix} encountered error while trying to run update_loop_call')
-                                print(e)
-                            finally:
-                                time.sleep(1)  # sleep for a second after calling update_loop_call
+                                print(f'Received error {e}')
+                    #
+                    # Run query loop only once every 30 seconds, don't want to overload bmtc servers
+                    if limit > datetime.now():
+                        print(f'{log_prefix} Have additional time before limit to query API is exhausted, sleeping.')
+                        time.sleep((limit - datetime.now()).total_seconds())
+                        print(f'{log_prefix} Now awake to continue querying')
+                    limit = datetime.now() + timedelta(seconds=30)
+                    print(f'{log_prefix} Set query api limit for 30 seconds after now')
+                    #
+                    # Add next_update to updating list
+                    update_state = update_timings_state.get()
+                    update_timings_state.put(update_state)
+                    if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.now().astimezone():
+                        print(f'{log_prefix} Adding {next_update["key"]} to updating_set')
+                        updating_set = updating.get()
+                        updating_set.add(next_update['key'])
+                        updating.put(updating_set)
+                        next_update = update_timings.get() if not update_timings.empty() else {}
+                    #
+                    # Query API with latest live data
+                    with concurrent.futures.ThreadPoolExecutor() as update_executor:
+                        waiting_on = currently_waiting_on.get()
+                        currently_waiting_on.put(waiting_on)
+                        print(f'{log_prefix} Currently waiting on ', waiting_on)
+                        updating_set = updating.get()
+                        # Due to pointers this is required, as we modify the set elsewhere
+                        updating.put(updating_set.copy())
+                        for r in updating_set:
+                            if r not in waiting_on:
+                                print(f'{log_prefix} Not waiting on {r}, querying')
+                                try:
+                                    update_executor.submit(updater, r)
+                                except Exception as e:
+                                    print(f'{log_prefix} encountered error while trying to run update_loop_call')
+                                    print(e)
+                                finally:
+                                    time.sleep(1)  # sleep for a second after calling update_loop_call
 
-                print(f'{log_prefix} Completed a round of calls')
-                data_snapshot = state_queue.get()  # Update our data snapshot
-                state_queue.put(data_snapshot)
-                if next_update == {}:
-                    next_update = update_timings.get() if not update_timings.empty() else {}
-                elif next_update['time'] < datetime.now().astimezone():
-                    updating_set = updating.get()
-                    updating_set.add(next_update['key'])
-                    updating.put(updating_set)
+                    print(f'{log_prefix} Completed a round of calls')
+                    data_snapshot = state_queue.get()  # Update our data snapshot
+                    state_queue.put(data_snapshot)
+                    if next_update == {}:
+                        next_update = update_timings.get() if not update_timings.empty() else {}
+                    elif next_update['time'] < datetime.now().astimezone():
+                        updating_set = updating.get()
+                        updating_set.add(next_update['key'])
+                        updating.put(updating_set)
+                except Exception as e:
+                    print(f'MAIN_RUNNER CHILD LOOP EXCEPTION ERROR {e}')
+                    print(traceback.format_exc())
         except Exception as e:
             print(f'MAIN_RUNNER EXECUTION ERROR {e}')
             print(traceback.format_exc())
@@ -364,17 +387,21 @@ def writer():
             await write_timings()
             update_timings_time = datetime.now() + timedelta(days=1)
             while True:
-                if not state_queue.empty():
-                    latest_data = state_queue.get().copy()
-                    state_queue.put(latest_data)
-                    if latest_data == end:
-                        return
-                    # print(f'{log_prefix} Data Tracking: {latest_data}')  # Write data to external source
-                time.sleep(30)
-                if update_timings_time < datetime.now():  # Update timings every day
-                    await write_timings()
-                    update_timings_time = update_timings_time + timedelta(days=1)
-                # queue.put(end)
+                try:
+                    if not state_queue.empty():
+                        latest_data = state_queue.get().copy()
+                        state_queue.put(latest_data)
+                        if latest_data == end:
+                            return
+                        # print(f'{log_prefix} Data Tracking: {latest_data}')  # Write data to external source
+                    time.sleep(30)
+                    if update_timings_time < datetime.now():  # Update timings every day
+                        await write_timings()
+                        update_timings_time = update_timings_time + timedelta(days=1)
+                    # queue.put(end)
+                except Exception as e:
+                    print(f'WRITER CHILD LOOP EXCEPTION ERROR {e}')
+                    print(traceback.format_exc())
         except Exception as e:
             print(f'WRITER EXECUTION ERROR {e}')
             print(traceback.format_exc())
