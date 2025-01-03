@@ -1,7 +1,8 @@
 import asyncio
 import concurrent.futures
 import time
-from datetime import datetime, timedelta, timezone
+from collections import defaultdict
+from datetime import datetime, timedelta
 
 # import boto3
 import os
@@ -68,7 +69,13 @@ suspect = Queue(1)
 suspect.put(set())
 timings_all = Queue(1)
 timings_all.put([])
-print(f'{log_prefix} Starting off with {routes.values()}')
+
+
+def print_t(s, e=''):  # Print with timestamp
+    print(f'{datetime.now().strftime("%Y-%m-%d-%H:%M:%S")} {s}', e)
+
+
+print_t(f'{log_prefix} Starting off with {routes.values()}')
 
 
 def updater(r):
@@ -78,11 +85,11 @@ def updater(r):
         # upon receiving q.put data for route
         # If received empty data then remove from set
         log_prefix = '[UPDATE_LOOP_CALL]'
-        print(f'{log_prefix} received value to query {r}')
+        print_t(f'{log_prefix} received value to query {r}')
         waiting_on = currently_waiting_on.get()
         waiting_on.add(r)
         currently_waiting_on.put(waiting_on)
-        print(f'{log_prefix} added {r} to waiting_on, now querying')
+        print_t(f'{log_prefix} added {r} to waiting_on, now querying')
         if r == end:
             q.put(end)
             return
@@ -93,11 +100,11 @@ def updater(r):
                 'servicetypeid': 0
             }),
             headers=request_headers).json()
-        print(f'{log_prefix} response has resolved for {r}')
+        print_t(f'{log_prefix} response has resolved for {r}')
         waiting_on = currently_waiting_on.get()
         waiting_on.remove(r)
         currently_waiting_on.put(waiting_on)
-        print(f'{log_prefix} removed {r} from waiting_on')
+        print_t(f'{log_prefix} removed {r} from waiting_on')
         if ('up' in response.keys()
                 and 'down' in response.keys()
                 and 'data' in response['up']
@@ -105,28 +112,28 @@ def updater(r):
                 and len(response['up']['data']) == 0
                 and len(response['down']['data']) == 0
         ):
-            print(f'{log_prefix} Suspected empty return for {r}', response)
+            print_t(f'{log_prefix} Suspected empty return for {r}', response)
             suspect_s = suspect.get()
             if r in suspect_s:
-                print(f'{log_prefix} Removed value {r} from updating')
+                print_t(f'{log_prefix} Removed value {r} from updating')
                 updating_s = updating.get()
                 updating_s.remove(r)
                 updating.put(updating_s)
                 suspect_s.remove(r)
                 suspect.put(suspect_s)
             else:
-                print(f'{log_prefix} Suspect added to suspicion')
+                print_t(f'{log_prefix} Suspect added to suspicion')
                 suspect_s.add(r)
                 suspect.put(suspect_s)
         else:
-            print(f'{log_prefix} Removed value {r} from suspicion')
+            print_t(f'{log_prefix} Removed value {r} from suspicion')
             suspect_s = suspect.get()
             if r in suspect_s:
                 suspect_s.remove(r)
             suspect.put(suspect_s)
 
         q.put(response)
-        print(f'{log_prefix} put response for {r} in queue')
+        print_t(f'{log_prefix} put response for {r} in queue')
 
     asyncio.run(update_loop_call(queue, r))
 
@@ -212,10 +219,10 @@ def main_runner():
                     if not state_queue.empty():
                         state_queue.get()
                     state_queue.put(old_full_data)
-                    print(f'{log_prefix} parsed data for {name}')
+                    print_t(f'{log_prefix} parsed data for {name}')
         except Exception as e:
-            print(f'Received error {e}')
-            print(traceback.format_exc())
+            print_t(f'Received error {e}')
+            print_t(traceback.format_exc())
 
     async def update_loop(q: Queue):  # Update data_snapshot very frequently, call update_loop_call
         try:
@@ -232,33 +239,33 @@ def main_runner():
                     #
                     # Consume entire queue
                     if not q.empty():
-                        print(f'{log_prefix} Consuming all elements in queue')
+                        print_t(f'{log_prefix} Consuming all elements in queue')
                         while not q.empty():
                             try:
                                 val = q.get()
                                 if val is end:
-                                    print(f'{log_prefix} Received end command via queue')
+                                    print_t(f'{log_prefix} Received end command via queue')
                                     if not state_queue.empty():
                                         state_queue.get()
                                     state_queue.put(end)
                                     return
                                 format_and_consume(val)
                             except Exception as e:
-                                print(f'Received error {e}')
+                                print_t(f'Received error {e}')
                     #
                     # Run query loop only once every 30 seconds, don't want to overload bmtc servers
                     if limit > datetime.now():
-                        print(f'{log_prefix} Have additional time before limit to query API is exhausted, sleeping.')
+                        print_t(f'{log_prefix} Have additional time before limit to query API is exhausted, sleeping.')
                         time.sleep((limit - datetime.now()).total_seconds())
-                        print(f'{log_prefix} Now awake to continue querying')
+                        print_t(f'{log_prefix} Now awake to continue querying')
                     limit = datetime.now() + timedelta(seconds=30)
-                    print(f'{log_prefix} Set query api limit for 30 seconds after now')
+                    print_t(f'{log_prefix} Set query api limit for 30 seconds after now')
                     #
                     # Add next_update to updating list
                     update_state = update_timings_state.get()
                     update_timings_state.put(update_state)
                     if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.now().astimezone():
-                        print(f'{log_prefix} Adding {next_update["key"]} to updating_set')
+                        print_t(f'{log_prefix} Adding {next_update["key"]} to updating_set')
                         updating_set = updating.get()
                         updating_set.add(next_update['key'])
                         updating.put(updating_set)
@@ -268,22 +275,22 @@ def main_runner():
                     with concurrent.futures.ThreadPoolExecutor() as update_executor:
                         waiting_on = currently_waiting_on.get()
                         currently_waiting_on.put(waiting_on)
-                        print(f'{log_prefix} Currently waiting on ', waiting_on)
+                        print_t(f'{log_prefix} Currently waiting on ', waiting_on)
                         updating_set = updating.get()
                         # Due to pointers this is required, as we modify the set elsewhere
                         updating.put(updating_set.copy())
                         for r in updating_set:
                             if r not in waiting_on:
-                                print(f'{log_prefix} Not waiting on {r}, querying')
+                                print_t(f'{log_prefix} Not waiting on {r}, querying')
                                 try:
                                     update_executor.submit(updater, r)
                                 except Exception as e:
-                                    print(f'{log_prefix} encountered error while trying to run update_loop_call')
-                                    print(e)
+                                    print_t(f'{log_prefix} encountered error while trying to run update_loop_call')
+                                    print_t(e)
                                 finally:
                                     time.sleep(1)  # sleep for a second after calling update_loop_call
 
-                    print(f'{log_prefix} Completed a round of calls')
+                    print_t(f'{log_prefix} Completed a round of calls')
                     data_snapshot = state_queue.get()  # Update our data snapshot
                     state_queue.put(data_snapshot)
                     if next_update == {}:
@@ -293,11 +300,11 @@ def main_runner():
                         updating_set.add(next_update['key'])
                         updating.put(updating_set)
                 except Exception as e:
-                    print(f'MAIN_RUNNER CHILD LOOP EXCEPTION ERROR {e}')
-                    print(traceback.format_exc())
+                    print_t(f'MAIN_RUNNER CHILD LOOP EXCEPTION ERROR {e}')
+                    print_t(traceback.format_exc())
         except Exception as e:
-            print(f'MAIN_RUNNER EXECUTION ERROR {e}')
-            print(traceback.format_exc())
+            print_t(f'MAIN_RUNNER EXECUTION ERROR {e}')
+            print_t(traceback.format_exc())
 
     # Run main update loop
     asyncio.run(update_loop(queue))
@@ -312,9 +319,9 @@ def writer():
         tomorrow_str = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
         tomorrow_start = f'{tomorrow_str} 00:01'
         tomorrow_end = f'{tomorrow_str} 23:59'
-        print(f'{log_prefix} Gathering timings for tomorrow from {tomorrow_start} to {tomorrow_end}')
+        print_t(f'{log_prefix} Gathering timings for tomorrow from {tomorrow_start} to {tomorrow_end}')
         for key, route in routes_children.items():
-            print(f'{log_prefix} Querying {route} routeid')
+            print_t(f'{log_prefix} Querying {route} routeid')
             response = requests.post(f'{api_url}/GetTimetableByRouteid_v3', headers=request_headers,
                                      data=json.dumps({
                                          'routeid': route,
@@ -322,23 +329,25 @@ def writer():
                                          'endtime': tomorrow_end,
                                          'current_date': tomorrow_str
                                      })).json()
-            print(f'{log_prefix} Request for {route} routeid {key} key resolved')
-            # print(f'{log_prefix} Response {response}')
+            print_t(f'{log_prefix} Request for {route} routeid {key} key resolved')
+            # print_t(f'{log_prefix} Response {response}')
             if 'data' in response.keys() and len(response['data']) > 0:
-                print(f'{log_prefix} Parsing data for {key}')
+                print_t(f'{log_prefix} Parsing data for {key}')
                 for response_data in response['data']:
-                    print(f'{log_prefix} Currently in data entry for {key}')
+                    print_t(f'{log_prefix} Currently in data entry for {key}')
                     if 'tripdetails' in response_data.keys() and len(response_data['tripdetails']) > 0:
-                        print(f'{log_prefix} {key} data entry has trip details')
+                        print_t(f'{log_prefix} {key} data entry has trip details')
                         for trip in response_data['tripdetails']:
-                            print(f'{log_prefix} Parsing trip for {key}')
-                            # print(f'{routes}')
-                            # print(f'{routes_children}')
+                            print_t(f'{log_prefix} Parsing trip for {key}')
+                            # print_t(f'{routes}')
+                            # print_t(f'{routes_children}')
                             in_key = routes[key]
-                            print(f'{log_prefix} Saving route {route} with parent {in_key}')
+                            print_t(f'{log_prefix} Saving route {route} with parent {in_key}')
                             original_start = datetime.strptime(f"{tomorrow_str} {trip['starttime']} +0530",
                                                                '%Y-%m-%d %H:%M %z')
-                            for i in range(2):
+                            for i in range(4):  # 4*2 attempts, half before and half after scheduled time
+                                # + 1 on scheduled time
+                                # Total buffer time (4*5)*2 minutes
                                 buffer = i * 5
                                 after = (original_start + timedelta(minutes=buffer))
                                 before = (original_start - timedelta(minutes=buffer))
@@ -393,18 +402,18 @@ def writer():
                         state_queue.put(latest_data)
                         if latest_data == end:
                             return
-                        # print(f'{log_prefix} Data Tracking: {latest_data}')  # Write data to external source
+                        # print_t(f'{log_prefix} Data Tracking: {latest_data}')  # Write data to external source
                     time.sleep(30)
                     if update_timings_time < datetime.now():  # Update timings every day
                         await write_timings()
                         update_timings_time = update_timings_time + timedelta(days=1)
                     # queue.put(end)
                 except Exception as e:
-                    print(f'WRITER CHILD LOOP EXCEPTION ERROR {e}')
-                    print(traceback.format_exc())
+                    print_t(f'WRITER CHILD LOOP EXCEPTION ERROR {e}')
+                    print_t(traceback.format_exc())
         except Exception as e:
-            print(f'WRITER EXECUTION ERROR {e}')
-            print(traceback.format_exc())
+            print_t(f'WRITER EXECUTION ERROR {e}')
+            print_t(traceback.format_exc())
 
     asyncio.run(write_loop())
 
@@ -419,15 +428,15 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
     @app.route('/')
     def index():
         log_prefix = '[API_INDEX_CALL]'
-        print(f'{log_prefix} Received API call')
+        print_t(f'{log_prefix} Received API call')
         current_state = state_queue.get().copy() if not state_queue.empty() else {}
         if not current_state == {}:
-            print(f'{log_prefix} Returning data value')
+            print_t(f'{log_prefix} Returning data value')
             state_queue.put(current_state)
             response = jsonify(current_state['data'])
             response.headers.add("Access-Control-Allow-Origin", "*")
             return response
-        print(f'{log_prefix} Returning default data')
+        print_t(f'{log_prefix} Returning default data')
         response = jsonify(current_state)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
@@ -436,10 +445,10 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
     @app.route('/times/')
     def times():
         log_prefix = '[API_TIMES_CALL]'
-        print(f'{log_prefix} Received API call')
+        print_t(f'{log_prefix} Received API call')
         start_times = start_timings.get().copy()
         start_timings.put(start_times)
-        print(f'{log_prefix} Received start times, returning object')
+        print_t(f'{log_prefix} Received start times, returning object')
         response = jsonify(start_times)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
@@ -448,23 +457,30 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
     @app.route('/info/')
     def run_info():
         log_prefix = '[API_INFO_CALL]'
-        print(f'{log_prefix} Received API call')
+        print_t(f'{log_prefix} Received API call')
         updating_set: set = updating.get().copy()
         updating.put(updating_set)
-        print(f'{log_prefix} Received currently_updating')
+        print_t(f'{log_prefix} Received currently_updating')
         timings = timings_all.get().copy()
         timings_all.put(timings)
-        print(f'{log_prefix} Received timings')
-        print(f'{log_prefix} Constructing info object')
+        print_t(f'{log_prefix} Received timings')
+        print_t(f'{log_prefix} Constructing info object')
+        result = defaultdict(list)
+        routenames = {v: k.replace(' UP', '').replace(' DOWN', '') for k, v in routes.items()}
+        for time_entry in timings:
+            result[time_entry['key']].append(time_entry['time'].isoformat())  # Use this for clearer readability and
+            # smaller responses
+
+        # Convert to a regular dict if needed
+        startup_timings = dict(result)
         info = {
-            'currently_updating': list(updating_set),
-            'currently_saved_startup_timings': [{'time': time_entry['time'].isoformat(),
-                                                 'key': time_entry['key']} for time_entry in timings],
-            'routes_parent': routes,
+            'currently_updating': [routenames[v] for v in updating_set],
+            'currently_saved_startup_timings': startup_timings,
+            'routes_parent': {v: k for k, v in routenames.items()},
             'routes_children': routes_children
         }
 
-        print(f'{log_prefix} Returning info object')
+        print_t(f'{log_prefix} Returning info object')
         response = jsonify(info)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
