@@ -291,7 +291,7 @@ def main_runner():
                                     time.sleep(1)  # sleep for a second after calling update_loop_call
 
                     print_t(f'{log_prefix} Completed a round of calls')
-                    data_snapshot = state_queue.get()  # Update our data snapshot
+                    data_snapshot = state_queue.get().copy()  # Update our data snapshot
                     state_queue.put(data_snapshot)
                     if next_update == {}:
                         next_update = update_timings.get() if not update_timings.empty() else {}
