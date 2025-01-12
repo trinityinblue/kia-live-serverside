@@ -206,7 +206,7 @@ def main_runner():
                     old_full_data = state_queue.get().copy() if not state_queue.empty() else \
                         {'last_update': datetime.now().astimezone(), 'data': {}}
                     state_queue.put(old_full_data)
-                    old_data = old_full_data['data']
+                    old_data = old_full_data['data'].copy()
                     old_data[name] = {'pollDate': datetime.now().astimezone().isoformat()}
                     for vehicle in vehicles.values():
                         last_known_stop = vehicle['lastKnownStop']
@@ -216,6 +216,7 @@ def main_runner():
 
                         old_data[name][last_known_stop].append(vehicle)
                     old_full_data['data'] = old_data
+                    old_full_data['update_info'] = {'updated_by': name, 'updated': datetime.now().astimezone().isoformat()}
                     if not state_queue.empty():
                         state_queue.get()
                     state_queue.put(old_full_data)
@@ -432,6 +433,7 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
         current_state = state_queue.get().copy() if not state_queue.empty() else {}
         if not current_state == {}:
             print_t(f'{log_prefix} Returning data value')
+            print_t(f'{log_prefix} current_state = {current_state}')
             state_queue.put(current_state)
             response = jsonify(current_state['data'])
             response.headers.add("Access-Control-Allow-Origin", "*")
