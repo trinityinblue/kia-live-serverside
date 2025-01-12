@@ -433,7 +433,7 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
         current_state = state_queue.get().copy() if not state_queue.empty() else {}
         if not current_state == {}:
             print_t(f'{log_prefix} Returning data value')
-            print_t(f'{log_prefix} current_state jsonify = {jsonify(current_state)}')
+            print_t(f'{log_prefix} current_state json = {json.dumps(current_state)}')
             state_queue.put(current_state)
             response = jsonify(current_state['data'])
             response.headers.add("Access-Control-Allow-Origin", "*")
