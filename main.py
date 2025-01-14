@@ -72,7 +72,7 @@ timings_all.put([])
 
 
 def print_t(s, e=''):  # Print with timestamp
-    print(f'{datetime.now().strftime("%Y-%m-%d-%H:%M:%S")} {s}', e)
+    print(f'\n{datetime.now().strftime("%Y-%m-%d-%H:%M:%S")} {s}', e)
 
 
 print_t(f'{log_prefix} Starting off with {routes.values()}')
@@ -85,11 +85,11 @@ def updater(r):
         # upon receiving q.put data for route
         # If received empty data then remove from set
         log_prefix = '[UPDATE_LOOP_CALL]'
-        print_t(f'{log_prefix} received value to query {r}')
+        print_t(f'{log_prefix} received value to query ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]})')
         waiting_on = currently_waiting_on.get()
         waiting_on.add(r)
         currently_waiting_on.put(waiting_on)
-        print_t(f'{log_prefix} added {r} to waiting_on, now querying')
+        print_t(f'{log_prefix} added ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}) to waiting_on, now querying')
         if r == end:
             q.put(end)
             return
@@ -100,11 +100,11 @@ def updater(r):
                 'servicetypeid': 0
             }),
             headers=request_headers).json()
-        print_t(f'{log_prefix} response has resolved for {r}')
+        print_t(f'{log_prefix} response has resolved for ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]})')
         waiting_on = currently_waiting_on.get()
         waiting_on.remove(r)
         currently_waiting_on.put(waiting_on)
-        print_t(f'{log_prefix} removed {r} from waiting_on')
+        print_t(f'{log_prefix} removed ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}) from waiting_on')
         if ('up' in response.keys()
                 and 'down' in response.keys()
                 and 'data' in response['up']
@@ -112,12 +112,13 @@ def updater(r):
                 and len(response['up']['data']) == 0
                 and len(response['down']['data']) == 0
         ):
-            print_t(f'{log_prefix} Suspected empty return for {r}', response)
+            print_t(f'{log_prefix} Suspected empty return for ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]})', response)
             suspect_s = suspect.get()
             if r in suspect_s:
-                print_t(f'{log_prefix} Removed value {r} from updating')
-                updating_s = updating.get()
+                print_t(f'{log_prefix} Removed value ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}) from updating')
+                updating_s = updating.get().copy()
                 updating_s.remove(r)
+                # print_t(f'{log_prefix} Didnt remove ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}), test run')
                 updating.put(updating_s)
                 suspect_s.remove(r)
                 suspect.put(suspect_s)
@@ -126,14 +127,14 @@ def updater(r):
                 suspect_s.add(r)
                 suspect.put(suspect_s)
         else:
-            print_t(f'{log_prefix} Removed value {r} from suspicion')
+            print_t(f'{log_prefix} Removed value ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}) from suspicion')
             suspect_s = suspect.get()
             if r in suspect_s:
                 suspect_s.remove(r)
             suspect.put(suspect_s)
 
         q.put(response)
-        print_t(f'{log_prefix} put response for {r} in queue')
+        print_t(f'{log_prefix} put response for ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}) in queue')
 
     asyncio.run(update_loop_call(queue, r))
 
@@ -237,6 +238,7 @@ def main_runner():
             next_update = update_timings.get().copy() if not update_timings.empty() else {}  # {'time': datetime.now(), 'key': 1}
             while data_snapshot['last_update'] < (datetime.now().astimezone() + timedelta(minutes=20)):
                 try:
+
                     #
                     # Consume entire queue
                     if not q.empty():
@@ -267,7 +269,7 @@ def main_runner():
                     update_timings_state.put(update_state)
                     if update_state and 'time' in next_update.keys() and next_update['time'] < datetime.now().astimezone():
                         print_t(f'{log_prefix} Adding {next_update["key"]} to updating_set')
-                        updating_set = updating.get()
+                        updating_set = updating.get().copy()
                         updating_set.add(next_update['key'])
                         updating.put(updating_set)
                         next_update = update_timings.get() if not update_timings.empty() else {}
@@ -282,7 +284,7 @@ def main_runner():
                         updating.put(updating_set.copy())
                         for r in updating_set:
                             if r not in waiting_on:
-                                print_t(f'{log_prefix} Not waiting on {r}, querying')
+                                print_t(f'{log_prefix} Not waiting on ({r}, {list(ALL_ROUTES_IDS.keys())[list(ALL_ROUTES_IDS.values()).index(r)]}), querying')
                                 try:
                                     update_executor.submit(updater, r)
                                 except Exception as e:
@@ -295,9 +297,10 @@ def main_runner():
                     data_snapshot = state_queue.get().copy()  # Update our data snapshot
                     state_queue.put(data_snapshot)
                     if next_update == {}:
-                        next_update = update_timings.get() if not update_timings.empty() else {}
+                        next_update = update_timings.get().copy() if not update_timings.empty() else {}
                     elif next_update['time'] < datetime.now().astimezone():
-                        updating_set = updating.get()
+                        print_t(f'{log_prefix} Adding {next_update["key"]} to updating_set')
+                        updating_set = updating.get().copy()
                         updating_set.add(next_update['key'])
                         updating.put(updating_set)
                 except Exception as e:
@@ -375,6 +378,7 @@ def writer():
                             if key not in legend.keys():
                                 legend[key] = route
                         time.sleep(2)  # Sleep for 2 seconds after getting timing information
+        timings.sort(key=lambda x: x['time'])
         update_timings_state.get()
         update_timings_state.put(False)
         while not update_timings.empty():
@@ -465,8 +469,16 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
         print_t(f'{log_prefix} Received currently_updating')
         timings = timings_all.get().copy()
         timings_all.put(timings)
-        print_t(f'{log_prefix} Received timings')
+        print_t(f'{log_prefix} Received timings_all')
         print_t(f'{log_prefix} Constructing info object')
+        next_updates = []
+        while True:
+            if update_timings.empty():
+                break
+            next_updates.append(update_timings.get().copy())
+        for x in next_updates.__reversed__():
+            update_timings.put(x)
+        print_t(f'{log_prefix} Received update_timings')
         result = defaultdict(list)
         routenames = {v: k.replace(' UP', '').replace(' DOWN', '') for k, v in routes.items()}
         for time_entry in timings:
@@ -478,6 +490,7 @@ with concurrent.futures.ThreadPoolExecutor() as main_executor:
         info = {
             'currently_updating': [routenames[v] for v in updating_set],
             'currently_saved_startup_timings': startup_timings,
+            'current_scheduled_startup_timings': next_updates,
             'routes_parent': {v: k for k, v in routenames.items()},
             'routes_children': routes_children
         }
