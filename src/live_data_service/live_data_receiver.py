@@ -27,7 +27,6 @@ async def live_data_receiver_loop():
         if now >= scheduled_time:
             _, job = scheduled_timings.get()  # Now remove
             parent_id = job["parent_id"]
-            print(f"{job['parent_id']} accepted")
 
             if parent_id in active_parents:
                 continue  # Already polling this parent
