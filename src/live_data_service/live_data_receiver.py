@@ -65,7 +65,7 @@ async def poll_route_parent_until_done(parent_id: int):
                 for trip_entry in trip_map.get(route_key, []):
                     matching_jobs.append({
                         "trip_id": trip_entry["trip"],
-                        "trip_time": datetime.strptime(trip_entry["start"], "%H:%M:%S"),
+                        "trip_time": datetime.strptime(f"{datetime.now().strftime('%Y%m%d')} {trip_entry['start']}", "%Y%m%d %H:%M:%S"),
                         "route_id": str(child_id),
                         "parent_id": parent_id
                     })

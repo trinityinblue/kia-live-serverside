@@ -13,7 +13,10 @@ def update_feed_message(entities: list):
         # Build new header
         feed_message.header.gtfs_realtime_version = "2.0"
         feed_message.header.timestamp = int(datetime.now().timestamp())
-
+        ids = set()
         # Add entities
         for entity in entities:
+            if entity.id in ids: # Prevent duplicates
+                continue
+            ids.add(entity.id)
             feed_message.entity.append(entity)

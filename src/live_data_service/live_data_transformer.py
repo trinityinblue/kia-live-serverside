@@ -7,14 +7,13 @@ from src.shared import ThreadSafeDict
 local_tz = pytz.timezone("Asia/Kolkata")
 all_entities = ThreadSafeDict()
 
+
 def transform_response_to_feed_entities(api_data: list, job: dict) -> list:
-    entities = []
     route_id = job["route_id"]
     trip_time = job["trip_time"]
     trip_id = job["trip_id"]
     match_window = timedelta(minutes=2)
 
-    # Step 1: Pre-group by vehicle
     vehicle_groups = {}
 
     for stop in api_data:
@@ -23,44 +22,43 @@ def transform_response_to_feed_entities(api_data: list, job: dict) -> list:
 
         vehicle_list = stop.get("vehicleDetails", [])
         for vehicle in vehicle_list:
-            vehicle_id = vehicle.get("vehicleid")
+            vehicle_id = str(vehicle.get("vehicleid"))
             if not vehicle_id:
                 continue
 
-            # Use sch_tripstarttime to find vehicle→trip match
             sch_time_str = vehicle.get("sch_tripstarttime")
             if not sch_time_str:
                 continue
 
-            # Parse sch_tripstarttime
             try:
                 hh, mm = map(int, sch_time_str.split(":"))
                 sch_trip_time = trip_time.replace(hour=hh, minute=mm, second=0, microsecond=0)
             except Exception:
                 continue
 
-            # Only include vehicles matching job["trip_time"]
             if abs(sch_trip_time - trip_time) > match_window:
                 continue
 
+            # Initialize group if needed
             if vehicle_id not in vehicle_groups:
                 vehicle_groups[vehicle_id] = {
                     "vehicle": vehicle,
                     "stops": []
                 }
-            stop["sch_arrivaltime"] = vehicle["sch_arrivaltime"]  # Port over the required fields for this group
-            stop["sch_departuretime"] = vehicle["sch_departuretime"]
-            stop["actual_arrivaltime"] = vehicle["actual_arrivaltime"]
-            stop["actual_departuretime"] = vehicle["actual_departuretime"]
-            # Add this stop entry (with its own sch/actual timings) to the group
-            vehicle_groups[vehicle_id]["stops"].append(stop.copy())
 
-    # Step 2: Build GTFS-RT FeedEntities
+            # Copy per-stop schedule into stop structure
+            stop_copy = stop.copy()
+            stop_copy["sch_arrivaltime"] = vehicle.get("sch_arrivaltime")
+            stop_copy["sch_departuretime"] = vehicle.get("sch_departuretime")
+            stop_copy["actual_arrivaltime"] = vehicle.get("actual_arrivaltime")
+            stop_copy["actual_departuretime"] = vehicle.get("actual_departuretime")
+            vehicle_groups[vehicle_id]["stops"].append(stop_copy)
+    all_entities.pop(trip_id)
+    # Step 2: Build GTFS-RT FeedEntities (one per vehicle)
     for vehicle_id, bundle in vehicle_groups.items():
         entity = build_feed_entity(bundle["vehicle"], trip_id, route_id, bundle["stops"])
-        entities.append(entity)
-    all_entities[trip_id] = entities
-    return [item for a in all_entities.values() for item in a]
+        all_entities[trip_id] = entity
+    return all_entities.values()
 
 
 def build_feed_entity(vehicle: dict, trip_id: str, route_id: str, stops: list):

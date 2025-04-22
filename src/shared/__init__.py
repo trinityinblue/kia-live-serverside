@@ -53,6 +53,10 @@ class ThreadSafeDict:
         with self._lock:
             return self._data.copy()
 
+    def pop(self, key, default=None):
+        with self._lock:
+            return self._data.pop(key, default)
+
     def __contains__(self, key):
         with self._lock:
             return key in self._data
