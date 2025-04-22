@@ -1,0 +1,4038 @@
+{
+    "KIA-4 DOWN": [
+        {
+            "start": 400,
+            "duration": 110
+        },
+        {
+            "start": 500,
+            "duration": 110
+        },
+        {
+            "start": 600,
+            "duration": 110
+        },
+        {
+            "start": 645,
+            "duration": 110
+        },
+        {
+            "start": 720,
+            "duration": 110
+        },
+        {
+            "start": 830,
+            "duration": 110
+        },
+        {
+            "start": 1530,
+            "duration": 110
+        },
+        {
+            "start": 1600,
+            "duration": 110
+        },
+        {
+            "start": 1700,
+            "duration": 110
+        },
+        {
+            "start": 1800,
+            "duration": 110
+        },
+        {
+            "start": 1830,
+            "duration": 110
+        },
+        {
+            "start": 1900,
+            "duration": 110
+        },
+        {
+            "start": 1930,
+            "duration": 110
+        },
+        {
+            "start": 2000,
+            "duration": 110
+        },
+        {
+            "start": 2030,
+            "duration": 110
+        },
+        {
+            "start": 2120,
+            "duration": 110
+        },
+        {
+            "start": 2225,
+            "duration": 110
+        },
+        {
+            "start": 2320,
+            "duration": 110
+        }
+    ],
+    "KIA-4 UP": [
+        {
+            "start": 300,
+            "duration": 110
+        },
+        {
+            "start": 400,
+            "duration": 110
+        },
+        {
+            "start": 450,
+            "duration": 110
+        },
+        {
+            "start": 530,
+            "duration": 110
+        },
+        {
+            "start": 600,
+            "duration": 110
+        },
+        {
+            "start": 630,
+            "duration": 110
+        },
+        {
+            "start": 700,
+            "duration": 110
+        },
+        {
+            "start": 800,
+            "duration": 110
+        },
+        {
+            "start": 900,
+            "duration": 110
+        },
+        {
+            "start": 950,
+            "duration": 110
+        },
+        {
+            "start": 1030,
+            "duration": 110
+        },
+        {
+            "start": 1130,
+            "duration": 110
+        },
+        {
+            "start": 1745,
+            "duration": 110
+        },
+        {
+            "start": 1810,
+            "duration": 110
+        },
+        {
+            "start": 1900,
+            "duration": 110
+        },
+        {
+            "start": 2010,
+            "duration": 110
+        },
+        {
+            "start": 2100,
+            "duration": 110
+        },
+        {
+            "start": 2210,
+            "duration": 110
+        },
+        {
+            "start": 2310,
+            "duration": 110
+        }
+    ],
+    "KIA-4A DOWN": [
+        {
+            "start": 5,
+            "duration": 120
+        },
+        {
+            "start": 130,
+            "duration": 120
+        },
+        {
+            "start": 700,
+            "duration": 120
+        },
+        {
+            "start": 800,
+            "duration": 120
+        },
+        {
+            "start": 905,
+            "duration": 120
+        },
+        {
+            "start": 1000,
+            "duration": 120
+        },
+        {
+            "start": 1100,
+            "duration": 120
+        },
+        {
+            "start": 1200,
+            "duration": 120
+        },
+        {
+            "start": 1235,
+            "duration": 120
+        },
+        {
+            "start": 1330,
+            "duration": 120
+        },
+        {
+            "start": 1440,
+            "duration": 120
+        }
+    ],
+    "KIA-4A UP": [
+        {
+            "start": 1215,
+            "duration": 120
+        },
+        {
+            "start": 1300,
+            "duration": 120
+        },
+        {
+            "start": 1335,
+            "duration": 120
+        },
+        {
+            "start": 1430,
+            "duration": 120
+        },
+        {
+            "start": 1540,
+            "duration": 120
+        },
+        {
+            "start": 1610,
+            "duration": 120
+        },
+        {
+            "start": 1640,
+            "duration": 120
+        },
+        {
+            "start": 1700,
+            "duration": 120
+        },
+        {
+            "start": 1820,
+            "duration": 120
+        }
+    ],
+    "KIA-5 DOWN": [
+        {
+            "start": 5,
+            "duration": 110
+        },
+        {
+            "start": 120,
+            "duration": 110
+        },
+        {
+            "start": 300,
+            "duration": 110
+        },
+        {
+            "start": 400,
+            "duration": 110
+        },
+        {
+            "start": 540,
+            "duration": 110
+        },
+        {
+            "start": 630,
+            "duration": 110
+        },
+        {
+            "start": 710,
+            "duration": 110
+        },
+        {
+            "start": 735,
+            "duration": 110
+        },
+        {
+            "start": 815,
+            "duration": 110
+        },
+        {
+            "start": 840,
+            "duration": 110
+        },
+        {
+            "start": 910,
+            "duration": 110
+        },
+        {
+            "start": 940,
+            "duration": 110
+        },
+        {
+            "start": 1020,
+            "duration": 110
+        },
+        {
+            "start": 1040,
+            "duration": 110
+        },
+        {
+            "start": 1115,
+            "duration": 110
+        },
+        {
+            "start": 1140,
+            "duration": 110
+        },
+        {
+            "start": 1200,
+            "duration": 110
+        },
+        {
+            "start": 1220,
+            "duration": 110
+        },
+        {
+            "start": 1250,
+            "duration": 110
+        },
+        {
+            "start": 1320,
+            "duration": 110
+        },
+        {
+            "start": 1350,
+            "duration": 110
+        },
+        {
+            "start": 1410,
+            "duration": 110
+        },
+        {
+            "start": 1440,
+            "duration": 110
+        },
+        {
+            "start": 1530,
+            "duration": 110
+        },
+        {
+            "start": 1600,
+            "duration": 110
+        },
+        {
+            "start": 1640,
+            "duration": 110
+        },
+        {
+            "start": 1725,
+            "duration": 110
+        },
+        {
+            "start": 1810,
+            "duration": 110
+        },
+        {
+            "start": 1830,
+            "duration": 110
+        },
+        {
+            "start": 1910,
+            "duration": 110
+        },
+        {
+            "start": 1930,
+            "duration": 110
+        },
+        {
+            "start": 2000,
+            "duration": 110
+        },
+        {
+            "start": 2045,
+            "duration": 110
+        },
+        {
+            "start": 2105,
+            "duration": 110
+        },
+        {
+            "start": 2125,
+            "duration": 110
+        },
+        {
+            "start": 2150,
+            "duration": 110
+        },
+        {
+            "start": 2210,
+            "duration": 110
+        },
+        {
+            "start": 2240,
+            "duration": 110
+        },
+        {
+            "start": 2310,
+            "duration": 110
+        },
+        {
+            "start": 2335,
+            "duration": 110
+        }
+    ],
+    "KIA-5 UP": [
+        {
+            "start": 5,
+            "duration": 110
+        },
+        {
+            "start": 115,
+            "duration": 110
+        },
+        {
+            "start": 350,
+            "duration": 110
+        },
+        {
+            "start": 430,
+            "duration": 110
+        },
+        {
+            "start": 510,
+            "duration": 110
+        },
+        {
+            "start": 540,
+            "duration": 110
+        },
+        {
+            "start": 620,
+            "duration": 110
+        },
+        {
+            "start": 700,
+            "duration": 110
+        },
+        {
+            "start": 740,
+            "duration": 110
+        },
+        {
+            "start": 820,
+            "duration": 110
+        },
+        {
+            "start": 900,
+            "duration": 110
+        },
+        {
+            "start": 930,
+            "duration": 110
+        },
+        {
+            "start": 1000,
+            "duration": 110
+        },
+        {
+            "start": 1045,
+            "duration": 110
+        },
+        {
+            "start": 1120,
+            "duration": 110
+        },
+        {
+            "start": 1140,
+            "duration": 110
+        },
+        {
+            "start": 1200,
+            "duration": 110
+        },
+        {
+            "start": 1230,
+            "duration": 110
+        },
+        {
+            "start": 1310,
+            "duration": 110
+        },
+        {
+            "start": 1345,
+            "duration": 110
+        },
+        {
+            "start": 1415,
+            "duration": 110
+        },
+        {
+            "start": 1440,
+            "duration": 110
+        },
+        {
+            "start": 1510,
+            "duration": 110
+        },
+        {
+            "start": 1530,
+            "duration": 110
+        },
+        {
+            "start": 1550,
+            "duration": 110
+        },
+        {
+            "start": 1610,
+            "duration": 110
+        },
+        {
+            "start": 1630,
+            "duration": 110
+        },
+        {
+            "start": 1655,
+            "duration": 110
+        },
+        {
+            "start": 1715,
+            "duration": 110
+        },
+        {
+            "start": 1735,
+            "duration": 110
+        },
+        {
+            "start": 1755,
+            "duration": 110
+        },
+        {
+            "start": 1820,
+            "duration": 110
+        },
+        {
+            "start": 1845,
+            "duration": 110
+        },
+        {
+            "start": 1905,
+            "duration": 110
+        },
+        {
+            "start": 1925,
+            "duration": 110
+        },
+        {
+            "start": 1945,
+            "duration": 110
+        },
+        {
+            "start": 2015,
+            "duration": 110
+        },
+        {
+            "start": 2055,
+            "duration": 110
+        },
+        {
+            "start": 2150,
+            "duration": 110
+        },
+        {
+            "start": 2325,
+            "duration": 110
+        }
+    ],
+    "KIA-5D DOWN": [
+        {
+            "start": 200,
+            "duration": 140
+        },
+        {
+            "start": 450,
+            "duration": 140
+        },
+        {
+            "start": 610,
+            "duration": 140
+        },
+        {
+            "start": 645,
+            "duration": 140
+        },
+        {
+            "start": 1500,
+            "duration": 140
+        },
+        {
+            "start": 1750,
+            "duration": 140
+        },
+        {
+            "start": 1850,
+            "duration": 140
+        },
+        {
+            "start": 1950,
+            "duration": 140
+        }
+    ],
+    "KIA-5D UP": [
+        {
+            "start": 430,
+            "duration": 140
+        },
+        {
+            "start": 720,
+            "duration": 140
+        },
+        {
+            "start": 920,
+            "duration": 140
+        },
+        {
+            "start": 1020,
+            "duration": 140
+        },
+        {
+            "start": 1740,
+            "duration": 140
+        },
+        {
+            "start": 2025,
+            "duration": 140
+        },
+        {
+            "start": 2120,
+            "duration": 140
+        },
+        {
+            "start": 2210,
+            "duration": 140
+        }
+    ],
+    "KIA-6 DOWN": [
+        {
+            "start": 100,
+            "duration": 120
+        },
+        {
+            "start": 205,
+            "duration": 120
+        },
+        {
+            "start": 300,
+            "duration": 120
+        },
+        {
+            "start": 630,
+            "duration": 120
+        },
+        {
+            "start": 730,
+            "duration": 120
+        },
+        {
+            "start": 845,
+            "duration": 120
+        },
+        {
+            "start": 950,
+            "duration": 120
+        },
+        {
+            "start": 1030,
+            "duration": 120
+        },
+        {
+            "start": 1130,
+            "duration": 120
+        },
+        {
+            "start": 1425,
+            "duration": 120
+        },
+        {
+            "start": 1510,
+            "duration": 120
+        },
+        {
+            "start": 1615,
+            "duration": 120
+        },
+        {
+            "start": 1730,
+            "duration": 120
+        },
+        {
+            "start": 1815,
+            "duration": 120
+        },
+        {
+            "start": 1915,
+            "duration": 120
+        },
+        {
+            "start": 2045,
+            "duration": 120
+        },
+        {
+            "start": 2210,
+            "duration": 120
+        },
+        {
+            "start": 2255,
+            "duration": 120
+        }
+    ],
+    "KIA-6 UP": [
+        {
+            "start": 500,
+            "duration": 120
+        },
+        {
+            "start": 605,
+            "duration": 120
+        },
+        {
+            "start": 645,
+            "duration": 120
+        },
+        {
+            "start": 750,
+            "duration": 120
+        },
+        {
+            "start": 845,
+            "duration": 120
+        },
+        {
+            "start": 1200,
+            "duration": 120
+        },
+        {
+            "start": 1600,
+            "duration": 120
+        },
+        {
+            "start": 1650,
+            "duration": 120
+        },
+        {
+            "start": 1730,
+            "duration": 120
+        },
+        {
+            "start": 1800,
+            "duration": 120
+        },
+        {
+            "start": 1920,
+            "duration": 120
+        },
+        {
+            "start": 2030,
+            "duration": 120
+        },
+        {
+            "start": 2130,
+            "duration": 120
+        },
+        {
+            "start": 2300,
+            "duration": 120
+        }
+    ],
+    "KIA-6A DOWN": [
+        {
+            "start": 545,
+            "duration": 120
+        },
+        {
+            "start": 745,
+            "duration": 120
+        },
+        {
+            "start": 1400,
+            "duration": 120
+        },
+        {
+            "start": 1450,
+            "duration": 120
+        }
+    ],
+    "KIA-6A UP": [
+        {
+            "start": 330,
+            "duration": 120
+        },
+        {
+            "start": 540,
+            "duration": 120
+        },
+        {
+            "start": 1100,
+            "duration": 120
+        },
+        {
+            "start": 1230,
+            "duration": 120
+        },
+        {
+            "start": 1635,
+            "duration": 120
+        },
+        {
+            "start": 1830,
+            "duration": 120
+        }
+    ],
+    "KIA-7 DOWN": [
+        {
+            "start": 50,
+            "duration": 110
+        },
+        {
+            "start": 925,
+            "duration": 110
+        },
+        {
+            "start": 1250,
+            "duration": 110
+        },
+        {
+            "start": 1500,
+            "duration": 110
+        },
+        {
+            "start": 1910,
+            "duration": 110
+        },
+        {
+            "start": 2350,
+            "duration": 110
+        }
+    ],
+    "KIA-7 UP": [
+        {
+            "start": 615,
+            "duration": 110
+        },
+        {
+            "start": 820,
+            "duration": 110
+        },
+        {
+            "start": 1130,
+            "duration": 110
+        },
+        {
+            "start": 1630,
+            "duration": 110
+        },
+        {
+            "start": 1820,
+            "duration": 110
+        },
+        {
+            "start": 2130,
+            "duration": 110
+        }
+    ],
+    "KIA-7A DOWN": [
+        {
+            "start": 15,
+            "duration": 110
+        },
+        {
+            "start": 100,
+            "duration": 110
+        },
+        {
+            "start": 200,
+            "duration": 110
+        },
+        {
+            "start": 300,
+            "duration": 110
+        },
+        {
+            "start": 500,
+            "duration": 110
+        },
+        {
+            "start": 600,
+            "duration": 110
+        },
+        {
+            "start": 650,
+            "duration": 110
+        },
+        {
+            "start": 730,
+            "duration": 110
+        },
+        {
+            "start": 810,
+            "duration": 110
+        },
+        {
+            "start": 840,
+            "duration": 110
+        },
+        {
+            "start": 910,
+            "duration": 110
+        },
+        {
+            "start": 940,
+            "duration": 110
+        },
+        {
+            "start": 1010,
+            "duration": 110
+        },
+        {
+            "start": 1030,
+            "duration": 110
+        },
+        {
+            "start": 1050,
+            "duration": 110
+        },
+        {
+            "start": 1110,
+            "duration": 110
+        },
+        {
+            "start": 1150,
+            "duration": 110
+        },
+        {
+            "start": 1230,
+            "duration": 110
+        },
+        {
+            "start": 1310,
+            "duration": 110
+        },
+        {
+            "start": 1350,
+            "duration": 110
+        },
+        {
+            "start": 1430,
+            "duration": 110
+        },
+        {
+            "start": 1510,
+            "duration": 110
+        },
+        {
+            "start": 1530,
+            "duration": 110
+        },
+        {
+            "start": 1600,
+            "duration": 110
+        },
+        {
+            "start": 1640,
+            "duration": 110
+        },
+        {
+            "start": 1720,
+            "duration": 110
+        },
+        {
+            "start": 1800,
+            "duration": 110
+        },
+        {
+            "start": 1840,
+            "duration": 110
+        },
+        {
+            "start": 1920,
+            "duration": 110
+        },
+        {
+            "start": 1940,
+            "duration": 110
+        },
+        {
+            "start": 2000,
+            "duration": 110
+        },
+        {
+            "start": 2020,
+            "duration": 110
+        },
+        {
+            "start": 2040,
+            "duration": 110
+        },
+        {
+            "start": 2100,
+            "duration": 110
+        },
+        {
+            "start": 2135,
+            "duration": 110
+        },
+        {
+            "start": 2155,
+            "duration": 110
+        },
+        {
+            "start": 2215,
+            "duration": 110
+        },
+        {
+            "start": 2235,
+            "duration": 110
+        },
+        {
+            "start": 2255,
+            "duration": 110
+        },
+        {
+            "start": 2335,
+            "duration": 110
+        }
+    ],
+    "KIA-7A UP": [
+        {
+            "start": 5,
+            "duration": 110
+        },
+        {
+            "start": 100,
+            "duration": 110
+        },
+        {
+            "start": 300,
+            "duration": 110
+        },
+        {
+            "start": 400,
+            "duration": 110
+        },
+        {
+            "start": 440,
+            "duration": 110
+        },
+        {
+            "start": 520,
+            "duration": 110
+        },
+        {
+            "start": 600,
+            "duration": 110
+        },
+        {
+            "start": 630,
+            "duration": 110
+        },
+        {
+            "start": 700,
+            "duration": 110
+        },
+        {
+            "start": 730,
+            "duration": 110
+        },
+        {
+            "start": 800,
+            "duration": 110
+        },
+        {
+            "start": 820,
+            "duration": 110
+        },
+        {
+            "start": 840,
+            "duration": 110
+        },
+        {
+            "start": 900,
+            "duration": 110
+        },
+        {
+            "start": 925,
+            "duration": 110
+        },
+        {
+            "start": 1020,
+            "duration": 110
+        },
+        {
+            "start": 1100,
+            "duration": 110
+        },
+        {
+            "start": 1140,
+            "duration": 110
+        },
+        {
+            "start": 1220,
+            "duration": 110
+        },
+        {
+            "start": 1300,
+            "duration": 110
+        },
+        {
+            "start": 1320,
+            "duration": 110
+        },
+        {
+            "start": 1400,
+            "duration": 110
+        },
+        {
+            "start": 1440,
+            "duration": 110
+        },
+        {
+            "start": 1510,
+            "duration": 110
+        },
+        {
+            "start": 1550,
+            "duration": 110
+        },
+        {
+            "start": 1630,
+            "duration": 110
+        },
+        {
+            "start": 1705,
+            "duration": 110
+        },
+        {
+            "start": 1725,
+            "duration": 110
+        },
+        {
+            "start": 1745,
+            "duration": 110
+        },
+        {
+            "start": 1805,
+            "duration": 110
+        },
+        {
+            "start": 1825,
+            "duration": 110
+        },
+        {
+            "start": 1845,
+            "duration": 110
+        },
+        {
+            "start": 1905,
+            "duration": 110
+        },
+        {
+            "start": 1925,
+            "duration": 110
+        },
+        {
+            "start": 2005,
+            "duration": 110
+        },
+        {
+            "start": 2025,
+            "duration": 110
+        },
+        {
+            "start": 2045,
+            "duration": 110
+        },
+        {
+            "start": 2125,
+            "duration": 110
+        },
+        {
+            "start": 2205,
+            "duration": 110
+        },
+        {
+            "start": 2245,
+            "duration": 110
+        }
+    ],
+    "KIA-8 DOWN": [
+        {
+            "start": 20,
+            "duration": 120
+        },
+        {
+            "start": 35,
+            "duration": 120
+        },
+        {
+            "start": 120,
+            "duration": 120
+        },
+        {
+            "start": 140,
+            "duration": 120
+        },
+        {
+            "start": 215,
+            "duration": 120
+        },
+        {
+            "start": 300,
+            "duration": 120
+        },
+        {
+            "start": 335,
+            "duration": 120
+        },
+        {
+            "start": 420,
+            "duration": 120
+        },
+        {
+            "start": 450,
+            "duration": 120
+        },
+        {
+            "start": 520,
+            "duration": 120
+        },
+        {
+            "start": 605,
+            "duration": 120
+        },
+        {
+            "start": 650,
+            "duration": 120
+        },
+        {
+            "start": 710,
+            "duration": 120
+        },
+        {
+            "start": 740,
+            "duration": 120
+        },
+        {
+            "start": 750,
+            "duration": 120
+        },
+        {
+            "start": 800,
+            "duration": 120
+        },
+        {
+            "start": 820,
+            "duration": 120
+        },
+        {
+            "start": 840,
+            "duration": 120
+        },
+        {
+            "start": 850,
+            "duration": 120
+        },
+        {
+            "start": 910,
+            "duration": 120
+        },
+        {
+            "start": 920,
+            "duration": 120
+        },
+        {
+            "start": 930,
+            "duration": 120
+        },
+        {
+            "start": 940,
+            "duration": 120
+        },
+        {
+            "start": 1010,
+            "duration": 120
+        },
+        {
+            "start": 1020,
+            "duration": 120
+        },
+        {
+            "start": 1040,
+            "duration": 120
+        },
+        {
+            "start": 1050,
+            "duration": 120
+        },
+        {
+            "start": 1100,
+            "duration": 120
+        },
+        {
+            "start": 1120,
+            "duration": 120
+        },
+        {
+            "start": 1155,
+            "duration": 120
+        },
+        {
+            "start": 1210,
+            "duration": 120
+        },
+        {
+            "start": 1225,
+            "duration": 120
+        },
+        {
+            "start": 1320,
+            "duration": 120
+        },
+        {
+            "start": 1330,
+            "duration": 120
+        },
+        {
+            "start": 1405,
+            "duration": 120
+        },
+        {
+            "start": 1435,
+            "duration": 120
+        },
+        {
+            "start": 1450,
+            "duration": 120
+        },
+        {
+            "start": 1510,
+            "duration": 120
+        },
+        {
+            "start": 1520,
+            "duration": 120
+        },
+        {
+            "start": 1540,
+            "duration": 120
+        },
+        {
+            "start": 1600,
+            "duration": 120
+        },
+        {
+            "start": 1630,
+            "duration": 120
+        },
+        {
+            "start": 1650,
+            "duration": 120
+        },
+        {
+            "start": 1730,
+            "duration": 120
+        },
+        {
+            "start": 1740,
+            "duration": 120
+        },
+        {
+            "start": 1750,
+            "duration": 120
+        },
+        {
+            "start": 1820,
+            "duration": 120
+        },
+        {
+            "start": 1830,
+            "duration": 120
+        },
+        {
+            "start": 1840,
+            "duration": 120
+        },
+        {
+            "start": 1900,
+            "duration": 120
+        },
+        {
+            "start": 1910,
+            "duration": 120
+        },
+        {
+            "start": 1920,
+            "duration": 120
+        },
+        {
+            "start": 1930,
+            "duration": 120
+        },
+        {
+            "start": 1950,
+            "duration": 120
+        },
+        {
+            "start": 2000,
+            "duration": 120
+        },
+        {
+            "start": 2020,
+            "duration": 120
+        },
+        {
+            "start": 2030,
+            "duration": 120
+        },
+        {
+            "start": 2050,
+            "duration": 120
+        },
+        {
+            "start": 2120,
+            "duration": 120
+        },
+        {
+            "start": 2220,
+            "duration": 120
+        },
+        {
+            "start": 2235,
+            "duration": 120
+        },
+        {
+            "start": 2305,
+            "duration": 120
+        },
+        {
+            "start": 2320,
+            "duration": 120
+        },
+        {
+            "start": 2335,
+            "duration": 120
+        }
+    ],
+    "KIA-8 UP": [
+        {
+            "start": 5,
+            "duration": 120
+        },
+        {
+            "start": 35,
+            "duration": 120
+        },
+        {
+            "start": 120,
+            "duration": 120
+        },
+        {
+            "start": 200,
+            "duration": 120
+        },
+        {
+            "start": 220,
+            "duration": 120
+        },
+        {
+            "start": 240,
+            "duration": 120
+        },
+        {
+            "start": 330,
+            "duration": 120
+        },
+        {
+            "start": 355,
+            "duration": 120
+        },
+        {
+            "start": 510,
+            "duration": 120
+        },
+        {
+            "start": 525,
+            "duration": 120
+        },
+        {
+            "start": 600,
+            "duration": 120
+        },
+        {
+            "start": 610,
+            "duration": 120
+        },
+        {
+            "start": 620,
+            "duration": 120
+        },
+        {
+            "start": 640,
+            "duration": 120
+        },
+        {
+            "start": 650,
+            "duration": 120
+        },
+        {
+            "start": 730,
+            "duration": 120
+        },
+        {
+            "start": 810,
+            "duration": 120
+        },
+        {
+            "start": 820,
+            "duration": 120
+        },
+        {
+            "start": 845,
+            "duration": 120
+        },
+        {
+            "start": 930,
+            "duration": 120
+        },
+        {
+            "start": 1000,
+            "duration": 120
+        },
+        {
+            "start": 1030,
+            "duration": 120
+        },
+        {
+            "start": 1100,
+            "duration": 120
+        },
+        {
+            "start": 1130,
+            "duration": 120
+        },
+        {
+            "start": 1200,
+            "duration": 120
+        },
+        {
+            "start": 1215,
+            "duration": 120
+        },
+        {
+            "start": 1230,
+            "duration": 120
+        },
+        {
+            "start": 1250,
+            "duration": 120
+        },
+        {
+            "start": 1320,
+            "duration": 120
+        },
+        {
+            "start": 1350,
+            "duration": 120
+        },
+        {
+            "start": 1420,
+            "duration": 120
+        },
+        {
+            "start": 1430,
+            "duration": 120
+        },
+        {
+            "start": 1500,
+            "duration": 120
+        },
+        {
+            "start": 1535,
+            "duration": 120
+        },
+        {
+            "start": 1605,
+            "duration": 120
+        },
+        {
+            "start": 1630,
+            "duration": 120
+        },
+        {
+            "start": 1710,
+            "duration": 120
+        },
+        {
+            "start": 1730,
+            "duration": 120
+        },
+        {
+            "start": 1800,
+            "duration": 120
+        },
+        {
+            "start": 1820,
+            "duration": 120
+        },
+        {
+            "start": 1830,
+            "duration": 120
+        },
+        {
+            "start": 1850,
+            "duration": 120
+        },
+        {
+            "start": 1940,
+            "duration": 120
+        },
+        {
+            "start": 2020,
+            "duration": 120
+        },
+        {
+            "start": 2030,
+            "duration": 120
+        },
+        {
+            "start": 2100,
+            "duration": 120
+        },
+        {
+            "start": 2110,
+            "duration": 120
+        },
+        {
+            "start": 2130,
+            "duration": 120
+        },
+        {
+            "start": 2210,
+            "duration": 120
+        },
+        {
+            "start": 2210,
+            "duration": 120
+        },
+        {
+            "start": 2220,
+            "duration": 120
+        },
+        {
+            "start": 2230,
+            "duration": 120
+        },
+        {
+            "start": 2240,
+            "duration": 120
+        },
+        {
+            "start": 2310,
+            "duration": 120
+        },
+        {
+            "start": 2320,
+            "duration": 120
+        },
+        {
+            "start": 2330,
+            "duration": 120
+        },
+        {
+            "start": 2340,
+            "duration": 120
+        }
+    ],
+    "KIA-8A DOWN": [
+        {
+            "start": 130,
+            "duration": 120
+        },
+        {
+            "start": 150,
+            "duration": 120
+        },
+        {
+            "start": 230,
+            "duration": 120
+        },
+        {
+            "start": 310,
+            "duration": 120
+        },
+        {
+            "start": 350,
+            "duration": 120
+        },
+        {
+            "start": 510,
+            "duration": 120
+        },
+        {
+            "start": 540,
+            "duration": 120
+        },
+        {
+            "start": 620,
+            "duration": 120
+        },
+        {
+            "start": 635,
+            "duration": 120
+        },
+        {
+            "start": 700,
+            "duration": 120
+        },
+        {
+            "start": 810,
+            "duration": 120
+        },
+        {
+            "start": 830,
+            "duration": 120
+        },
+        {
+            "start": 900,
+            "duration": 120
+        },
+        {
+            "start": 950,
+            "duration": 120
+        },
+        {
+            "start": 1000,
+            "duration": 120
+        },
+        {
+            "start": 1030,
+            "duration": 120
+        },
+        {
+            "start": 1110,
+            "duration": 120
+        },
+        {
+            "start": 1130,
+            "duration": 120
+        },
+        {
+            "start": 1310,
+            "duration": 120
+        },
+        {
+            "start": 1340,
+            "duration": 120
+        },
+        {
+            "start": 1500,
+            "duration": 120
+        },
+        {
+            "start": 1550,
+            "duration": 120
+        },
+        {
+            "start": 1610,
+            "duration": 120
+        },
+        {
+            "start": 1700,
+            "duration": 120
+        },
+        {
+            "start": 1850,
+            "duration": 120
+        },
+        {
+            "start": 1940,
+            "duration": 120
+        },
+        {
+            "start": 2040,
+            "duration": 120
+        },
+        {
+            "start": 2105,
+            "duration": 120
+        },
+        {
+            "start": 2140,
+            "duration": 120
+        },
+        {
+            "start": 2200,
+            "duration": 120
+        },
+        {
+            "start": 2250,
+            "duration": 120
+        },
+        {
+            "start": 2350,
+            "duration": 120
+        }
+    ],
+    "KIA-8A UP": [
+        {
+            "start": 100,
+            "duration": 120
+        },
+        {
+            "start": 140,
+            "duration": 120
+        },
+        {
+            "start": 340,
+            "duration": 120
+        },
+        {
+            "start": 425,
+            "duration": 120
+        },
+        {
+            "start": 455,
+            "duration": 120
+        },
+        {
+            "start": 540,
+            "duration": 120
+        },
+        {
+            "start": 720,
+            "duration": 120
+        },
+        {
+            "start": 750,
+            "duration": 120
+        },
+        {
+            "start": 915,
+            "duration": 120
+        },
+        {
+            "start": 1020,
+            "duration": 120
+        },
+        {
+            "start": 1040,
+            "duration": 120
+        },
+        {
+            "start": 1050,
+            "duration": 120
+        },
+        {
+            "start": 1110,
+            "duration": 120
+        },
+        {
+            "start": 1120,
+            "duration": 120
+        },
+        {
+            "start": 1140,
+            "duration": 120
+        },
+        {
+            "start": 1150,
+            "duration": 120
+        },
+        {
+            "start": 1240,
+            "duration": 120
+        },
+        {
+            "start": 1305,
+            "duration": 120
+        },
+        {
+            "start": 1335,
+            "duration": 120
+        },
+        {
+            "start": 1400,
+            "duration": 120
+        },
+        {
+            "start": 1410,
+            "duration": 120
+        },
+        {
+            "start": 1445,
+            "duration": 120
+        },
+        {
+            "start": 1520,
+            "duration": 120
+        },
+        {
+            "start": 1545,
+            "duration": 120
+        },
+        {
+            "start": 1640,
+            "duration": 120
+        },
+        {
+            "start": 1700,
+            "duration": 120
+        },
+        {
+            "start": 1720,
+            "duration": 120
+        },
+        {
+            "start": 1750,
+            "duration": 120
+        },
+        {
+            "start": 1810,
+            "duration": 120
+        },
+        {
+            "start": 1840,
+            "duration": 120
+        },
+        {
+            "start": 1910,
+            "duration": 120
+        },
+        {
+            "start": 1930,
+            "duration": 120
+        },
+        {
+            "start": 2000,
+            "duration": 120
+        },
+        {
+            "start": 2120,
+            "duration": 120
+        },
+        {
+            "start": 2140,
+            "duration": 120
+        },
+        {
+            "start": 2150,
+            "duration": 120
+        },
+        {
+            "start": 2250,
+            "duration": 120
+        }
+    ],
+    "KIA-8C DOWN": [
+        {
+            "start": 5,
+            "duration": 180
+        },
+        {
+            "start": 105,
+            "duration": 180
+        },
+        {
+            "start": 245,
+            "duration": 180
+        },
+        {
+            "start": 410,
+            "duration": 180
+        },
+        {
+            "start": 440,
+            "duration": 180
+        },
+        {
+            "start": 530,
+            "duration": 180
+        },
+        {
+            "start": 1140,
+            "duration": 180
+        },
+        {
+            "start": 1240,
+            "duration": 180
+        },
+        {
+            "start": 1420,
+            "duration": 180
+        },
+        {
+            "start": 1530,
+            "duration": 180
+        },
+        {
+            "start": 1640,
+            "duration": 180
+        },
+        {
+            "start": 1720,
+            "duration": 180
+        }
+    ],
+    "KIA-8C UP": [
+        {
+            "start": 315,
+            "duration": 180
+        },
+        {
+            "start": 440,
+            "duration": 180
+        },
+        {
+            "start": 550,
+            "duration": 180
+        },
+        {
+            "start": 740,
+            "duration": 180
+        },
+        {
+            "start": 830,
+            "duration": 180
+        },
+        {
+            "start": 945,
+            "duration": 180
+        },
+        {
+            "start": 1510,
+            "duration": 180
+        },
+        {
+            "start": 1615,
+            "duration": 180
+        },
+        {
+            "start": 1740,
+            "duration": 180
+        },
+        {
+            "start": 1900,
+            "duration": 180
+        },
+        {
+            "start": 2010,
+            "duration": 180
+        },
+        {
+            "start": 2050,
+            "duration": 180
+        }
+    ],
+    "KIA-8E DOWN": [
+        {
+            "start": 1255,
+            "duration": 130
+        },
+        {
+            "start": 1350,
+            "duration": 130
+        },
+        {
+            "start": 1620,
+            "duration": 130
+        },
+        {
+            "start": 1800,
+            "duration": 130
+        }
+    ],
+    "KIA-8E UP": [
+        {
+            "start": 300,
+            "duration": 130
+        },
+        {
+            "start": 410,
+            "duration": 130
+        },
+        {
+            "start": 630,
+            "duration": 130
+        },
+        {
+            "start": 710,
+            "duration": 130
+        },
+        {
+            "start": 1555,
+            "duration": 130
+        },
+        {
+            "start": 1650,
+            "duration": 130
+        },
+        {
+            "start": 1920,
+            "duration": 130
+        },
+        {
+            "start": 2040,
+            "duration": 130
+        }
+    ],
+    "KIA-8EW DOWN": [
+        {
+            "start": 50,
+            "duration": 130
+        },
+        {
+            "start": 200,
+            "duration": 130
+        },
+        {
+            "start": 320,
+            "duration": 130
+        },
+        {
+            "start": 430,
+            "duration": 130
+        }
+    ],
+    "KIA-8D DOWN": [
+        {
+            "start": 400,
+            "duration": 120
+        },
+        {
+            "start": 500,
+            "duration": 120
+        },
+        {
+            "start": 550,
+            "duration": 120
+        },
+        {
+            "start": 725,
+            "duration": 120
+        },
+        {
+            "start": 1710,
+            "duration": 120
+        },
+        {
+            "start": 1810,
+            "duration": 120
+        },
+        {
+            "start": 2010,
+            "duration": 120
+        }
+    ],
+    "KIA-8D UP": [
+        {
+            "start": 700,
+            "duration": 120
+        },
+        {
+            "start": 800,
+            "duration": 120
+        },
+        {
+            "start": 900,
+            "duration": 120
+        },
+        {
+            "start": 1010,
+            "duration": 120
+        },
+        {
+            "start": 1950,
+            "duration": 120
+        },
+        {
+            "start": 2200,
+            "duration": 120
+        },
+        {
+            "start": 2300,
+            "duration": 120
+        }
+    ],
+    "KIA-9 DOWN": [
+        {
+            "start": 10,
+            "duration": 60
+        },
+        {
+            "start": 30,
+            "duration": 60
+        },
+        {
+            "start": 50,
+            "duration": 60
+        },
+        {
+            "start": 110,
+            "duration": 60
+        },
+        {
+            "start": 130,
+            "duration": 60
+        },
+        {
+            "start": 150,
+            "duration": 60
+        },
+        {
+            "start": 210,
+            "duration": 60
+        },
+        {
+            "start": 230,
+            "duration": 60
+        },
+        {
+            "start": 250,
+            "duration": 60
+        },
+        {
+            "start": 310,
+            "duration": 60
+        },
+        {
+            "start": 340,
+            "duration": 60
+        },
+        {
+            "start": 400,
+            "duration": 60
+        },
+        {
+            "start": 420,
+            "duration": 60
+        },
+        {
+            "start": 440,
+            "duration": 60
+        },
+        {
+            "start": 500,
+            "duration": 60
+        },
+        {
+            "start": 520,
+            "duration": 60
+        },
+        {
+            "start": 535,
+            "duration": 60
+        },
+        {
+            "start": 550,
+            "duration": 60
+        },
+        {
+            "start": 605,
+            "duration": 60
+        },
+        {
+            "start": 620,
+            "duration": 60
+        },
+        {
+            "start": 635,
+            "duration": 60
+        },
+        {
+            "start": 650,
+            "duration": 60
+        },
+        {
+            "start": 700,
+            "duration": 60
+        },
+        {
+            "start": 715,
+            "duration": 60
+        },
+        {
+            "start": 730,
+            "duration": 60
+        },
+        {
+            "start": 745,
+            "duration": 60
+        },
+        {
+            "start": 800,
+            "duration": 60
+        },
+        {
+            "start": 815,
+            "duration": 60
+        },
+        {
+            "start": 830,
+            "duration": 60
+        },
+        {
+            "start": 845,
+            "duration": 60
+        },
+        {
+            "start": 900,
+            "duration": 60
+        },
+        {
+            "start": 910,
+            "duration": 60
+        },
+        {
+            "start": 920,
+            "duration": 60
+        },
+        {
+            "start": 930,
+            "duration": 60
+        },
+        {
+            "start": 940,
+            "duration": 60
+        },
+        {
+            "start": 950,
+            "duration": 60
+        },
+        {
+            "start": 1000,
+            "duration": 60
+        },
+        {
+            "start": 1015,
+            "duration": 60
+        },
+        {
+            "start": 1030,
+            "duration": 60
+        },
+        {
+            "start": 1040,
+            "duration": 60
+        },
+        {
+            "start": 1050,
+            "duration": 60
+        },
+        {
+            "start": 1100,
+            "duration": 60
+        },
+        {
+            "start": 1110,
+            "duration": 60
+        },
+        {
+            "start": 1125,
+            "duration": 60
+        },
+        {
+            "start": 1140,
+            "duration": 60
+        },
+        {
+            "start": 1150,
+            "duration": 60
+        },
+        {
+            "start": 1200,
+            "duration": 60
+        },
+        {
+            "start": 1210,
+            "duration": 60
+        },
+        {
+            "start": 1225,
+            "duration": 60
+        },
+        {
+            "start": 1240,
+            "duration": 60
+        },
+        {
+            "start": 1250,
+            "duration": 60
+        },
+        {
+            "start": 1300,
+            "duration": 60
+        },
+        {
+            "start": 1310,
+            "duration": 60
+        },
+        {
+            "start": 1325,
+            "duration": 60
+        },
+        {
+            "start": 1340,
+            "duration": 60
+        },
+        {
+            "start": 1355,
+            "duration": 60
+        },
+        {
+            "start": 1410,
+            "duration": 60
+        },
+        {
+            "start": 1425,
+            "duration": 60
+        },
+        {
+            "start": 1440,
+            "duration": 60
+        },
+        {
+            "start": 1455,
+            "duration": 60
+        },
+        {
+            "start": 1510,
+            "duration": 60
+        },
+        {
+            "start": 1525,
+            "duration": 60
+        },
+        {
+            "start": 1540,
+            "duration": 60
+        },
+        {
+            "start": 1600,
+            "duration": 60
+        },
+        {
+            "start": 1620,
+            "duration": 60
+        },
+        {
+            "start": 1640,
+            "duration": 60
+        },
+        {
+            "start": 1655,
+            "duration": 60
+        },
+        {
+            "start": 1710,
+            "duration": 60
+        },
+        {
+            "start": 1725,
+            "duration": 60
+        },
+        {
+            "start": 1745,
+            "duration": 60
+        },
+        {
+            "start": 1805,
+            "duration": 60
+        },
+        {
+            "start": 1820,
+            "duration": 60
+        },
+        {
+            "start": 1840,
+            "duration": 60
+        },
+        {
+            "start": 1900,
+            "duration": 60
+        },
+        {
+            "start": 1920,
+            "duration": 60
+        },
+        {
+            "start": 1935,
+            "duration": 60
+        },
+        {
+            "start": 1950,
+            "duration": 60
+        },
+        {
+            "start": 2000,
+            "duration": 60
+        },
+        {
+            "start": 2010,
+            "duration": 60
+        },
+        {
+            "start": 2020,
+            "duration": 60
+        },
+        {
+            "start": 2030,
+            "duration": 60
+        },
+        {
+            "start": 2045,
+            "duration": 60
+        },
+        {
+            "start": 2100,
+            "duration": 60
+        },
+        {
+            "start": 2110,
+            "duration": 60
+        },
+        {
+            "start": 2120,
+            "duration": 60
+        },
+        {
+            "start": 2135,
+            "duration": 60
+        },
+        {
+            "start": 2150,
+            "duration": 60
+        },
+        {
+            "start": 2205,
+            "duration": 60
+        },
+        {
+            "start": 2220,
+            "duration": 60
+        },
+        {
+            "start": 2235,
+            "duration": 60
+        },
+        {
+            "start": 2250,
+            "duration": 60
+        },
+        {
+            "start": 2305,
+            "duration": 60
+        },
+        {
+            "start": 2320,
+            "duration": 60
+        },
+        {
+            "start": 2330,
+            "duration": 60
+        },
+        {
+            "start": 2340,
+            "duration": 60
+        },
+        {
+            "start": 2350,
+            "duration": 60
+        }
+    ],
+    "KIA-9 UP": [
+        {
+            "start": 5,
+            "duration": 60
+        },
+        {
+            "start": 25,
+            "duration": 60
+        },
+        {
+            "start": 50,
+            "duration": 60
+        },
+        {
+            "start": 120,
+            "duration": 60
+        },
+        {
+            "start": 140,
+            "duration": 60
+        },
+        {
+            "start": 200,
+            "duration": 60
+        },
+        {
+            "start": 220,
+            "duration": 60
+        },
+        {
+            "start": 240,
+            "duration": 60
+        },
+        {
+            "start": 300,
+            "duration": 60
+        },
+        {
+            "start": 320,
+            "duration": 60
+        },
+        {
+            "start": 340,
+            "duration": 60
+        },
+        {
+            "start": 400,
+            "duration": 60
+        },
+        {
+            "start": 420,
+            "duration": 60
+        },
+        {
+            "start": 440,
+            "duration": 60
+        },
+        {
+            "start": 500,
+            "duration": 60
+        },
+        {
+            "start": 520,
+            "duration": 60
+        },
+        {
+            "start": 540,
+            "duration": 60
+        },
+        {
+            "start": 600,
+            "duration": 60
+        },
+        {
+            "start": 615,
+            "duration": 60
+        },
+        {
+            "start": 630,
+            "duration": 60
+        },
+        {
+            "start": 645,
+            "duration": 60
+        },
+        {
+            "start": 705,
+            "duration": 60
+        },
+        {
+            "start": 720,
+            "duration": 60
+        },
+        {
+            "start": 735,
+            "duration": 60
+        },
+        {
+            "start": 745,
+            "duration": 60
+        },
+        {
+            "start": 800,
+            "duration": 60
+        },
+        {
+            "start": 815,
+            "duration": 60
+        },
+        {
+            "start": 830,
+            "duration": 60
+        },
+        {
+            "start": 845,
+            "duration": 60
+        },
+        {
+            "start": 900,
+            "duration": 60
+        },
+        {
+            "start": 915,
+            "duration": 60
+        },
+        {
+            "start": 930,
+            "duration": 60
+        },
+        {
+            "start": 945,
+            "duration": 60
+        },
+        {
+            "start": 1000,
+            "duration": 60
+        },
+        {
+            "start": 1015,
+            "duration": 60
+        },
+        {
+            "start": 1030,
+            "duration": 60
+        },
+        {
+            "start": 1045,
+            "duration": 60
+        },
+        {
+            "start": 1100,
+            "duration": 60
+        },
+        {
+            "start": 1115,
+            "duration": 60
+        },
+        {
+            "start": 1130,
+            "duration": 60
+        },
+        {
+            "start": 1145,
+            "duration": 60
+        },
+        {
+            "start": 1200,
+            "duration": 60
+        },
+        {
+            "start": 1215,
+            "duration": 60
+        },
+        {
+            "start": 1230,
+            "duration": 60
+        },
+        {
+            "start": 1245,
+            "duration": 60
+        },
+        {
+            "start": 1300,
+            "duration": 60
+        },
+        {
+            "start": 1315,
+            "duration": 60
+        },
+        {
+            "start": 1330,
+            "duration": 60
+        },
+        {
+            "start": 1340,
+            "duration": 60
+        },
+        {
+            "start": 1350,
+            "duration": 60
+        },
+        {
+            "start": 1400,
+            "duration": 60
+        },
+        {
+            "start": 1415,
+            "duration": 60
+        },
+        {
+            "start": 1430,
+            "duration": 60
+        },
+        {
+            "start": 1445,
+            "duration": 60
+        },
+        {
+            "start": 1455,
+            "duration": 60
+        },
+        {
+            "start": 1505,
+            "duration": 60
+        },
+        {
+            "start": 1515,
+            "duration": 60
+        },
+        {
+            "start": 1525,
+            "duration": 60
+        },
+        {
+            "start": 1535,
+            "duration": 60
+        },
+        {
+            "start": 1545,
+            "duration": 60
+        },
+        {
+            "start": 1555,
+            "duration": 60
+        },
+        {
+            "start": 1605,
+            "duration": 60
+        },
+        {
+            "start": 1615,
+            "duration": 60
+        },
+        {
+            "start": 1625,
+            "duration": 60
+        },
+        {
+            "start": 1635,
+            "duration": 60
+        },
+        {
+            "start": 1650,
+            "duration": 60
+        },
+        {
+            "start": 1700,
+            "duration": 60
+        },
+        {
+            "start": 1715,
+            "duration": 60
+        },
+        {
+            "start": 1730,
+            "duration": 60
+        },
+        {
+            "start": 1745,
+            "duration": 60
+        },
+        {
+            "start": 1800,
+            "duration": 60
+        },
+        {
+            "start": 1810,
+            "duration": 60
+        },
+        {
+            "start": 1820,
+            "duration": 60
+        },
+        {
+            "start": 1830,
+            "duration": 60
+        },
+        {
+            "start": 1840,
+            "duration": 60
+        },
+        {
+            "start": 1850,
+            "duration": 60
+        },
+        {
+            "start": 1900,
+            "duration": 60
+        },
+        {
+            "start": 1915,
+            "duration": 60
+        },
+        {
+            "start": 1930,
+            "duration": 60
+        },
+        {
+            "start": 1940,
+            "duration": 60
+        },
+        {
+            "start": 1950,
+            "duration": 60
+        },
+        {
+            "start": 2000,
+            "duration": 60
+        },
+        {
+            "start": 2015,
+            "duration": 60
+        },
+        {
+            "start": 2030,
+            "duration": 60
+        },
+        {
+            "start": 2045,
+            "duration": 60
+        },
+        {
+            "start": 2100,
+            "duration": 60
+        },
+        {
+            "start": 2115,
+            "duration": 60
+        },
+        {
+            "start": 2130,
+            "duration": 60
+        },
+        {
+            "start": 2145,
+            "duration": 60
+        },
+        {
+            "start": 2200,
+            "duration": 60
+        },
+        {
+            "start": 2210,
+            "duration": 60
+        },
+        {
+            "start": 2220,
+            "duration": 60
+        },
+        {
+            "start": 2230,
+            "duration": 60
+        },
+        {
+            "start": 2240,
+            "duration": 60
+        },
+        {
+            "start": 2300,
+            "duration": 60
+        },
+        {
+            "start": 2320,
+            "duration": 60
+        },
+        {
+            "start": 2350,
+            "duration": 60
+        }
+    ],
+    "KIA-9H DOWN": [
+        {
+            "start": 620,
+            "duration": 60
+        },
+        {
+            "start": 630,
+            "duration": 60
+        },
+        {
+            "start": 750,
+            "duration": 60
+        },
+        {
+            "start": 1005,
+            "duration": 60
+        },
+        {
+            "start": 1125,
+            "duration": 60
+        },
+        {
+            "start": 1245,
+            "duration": 60
+        },
+        {
+            "start": 1255,
+            "duration": 60
+        },
+        {
+            "start": 1415,
+            "duration": 60
+        },
+        {
+            "start": 1425,
+            "duration": 60
+        },
+        {
+            "start": 1550,
+            "duration": 60
+        }
+    ],
+    "KIA-9H UP": [
+        {
+            "start": 845,
+            "duration": 60
+        },
+        {
+            "start": 1105,
+            "duration": 60
+        },
+        {
+            "start": 1330,
+            "duration": 60
+        },
+        {
+            "start": 1440,
+            "duration": 60
+        },
+        {
+            "start": 1455,
+            "duration": 60
+        },
+        {
+            "start": 1600,
+            "duration": 60
+        },
+        {
+            "start": 1645,
+            "duration": 60
+        },
+        {
+            "start": 1705,
+            "duration": 60
+        },
+        {
+            "start": 1805,
+            "duration": 60
+        },
+        {
+            "start": 1830,
+            "duration": 60
+        },
+        {
+            "start": 2050,
+            "duration": 60
+        },
+        {
+            "start": 2135,
+            "duration": 60
+        }
+    ],
+    "KIA-10 DOWN": [
+        {
+            "start": 5,
+            "duration": 105
+        },
+        {
+            "start": 35,
+            "duration": 105
+        },
+        {
+            "start": 105,
+            "duration": 105
+        },
+        {
+            "start": 200,
+            "duration": 105
+        },
+        {
+            "start": 300,
+            "duration": 105
+        },
+        {
+            "start": 500,
+            "duration": 105
+        },
+        {
+            "start": 600,
+            "duration": 105
+        },
+        {
+            "start": 630,
+            "duration": 105
+        },
+        {
+            "start": 700,
+            "duration": 105
+        },
+        {
+            "start": 730,
+            "duration": 105
+        },
+        {
+            "start": 800,
+            "duration": 105
+        },
+        {
+            "start": 830,
+            "duration": 105
+        },
+        {
+            "start": 900,
+            "duration": 105
+        },
+        {
+            "start": 930,
+            "duration": 105
+        },
+        {
+            "start": 1000,
+            "duration": 105
+        },
+        {
+            "start": 1030,
+            "duration": 105
+        },
+        {
+            "start": 1100,
+            "duration": 105
+        },
+        {
+            "start": 1130,
+            "duration": 105
+        },
+        {
+            "start": 1200,
+            "duration": 105
+        },
+        {
+            "start": 1230,
+            "duration": 105
+        },
+        {
+            "start": 1300,
+            "duration": 105
+        },
+        {
+            "start": 1330,
+            "duration": 105
+        },
+        {
+            "start": 1400,
+            "duration": 105
+        },
+        {
+            "start": 1430,
+            "duration": 105
+        },
+        {
+            "start": 1500,
+            "duration": 105
+        },
+        {
+            "start": 1600,
+            "duration": 105
+        },
+        {
+            "start": 1630,
+            "duration": 105
+        },
+        {
+            "start": 1700,
+            "duration": 105
+        },
+        {
+            "start": 1730,
+            "duration": 105
+        },
+        {
+            "start": 1800,
+            "duration": 105
+        },
+        {
+            "start": 1830,
+            "duration": 105
+        },
+        {
+            "start": 1900,
+            "duration": 105
+        },
+        {
+            "start": 1930,
+            "duration": 105
+        },
+        {
+            "start": 2000,
+            "duration": 105
+        },
+        {
+            "start": 2030,
+            "duration": 105
+        },
+        {
+            "start": 2100,
+            "duration": 105
+        },
+        {
+            "start": 2120,
+            "duration": 105
+        },
+        {
+            "start": 2140,
+            "duration": 105
+        },
+        {
+            "start": 2200,
+            "duration": 105
+        },
+        {
+            "start": 2230,
+            "duration": 105
+        },
+        {
+            "start": 2300,
+            "duration": 105
+        },
+        {
+            "start": 2330,
+            "duration": 105
+        }
+    ],
+    "KIA-10 UP": [
+        {
+            "start": 5,
+            "duration": 105
+        },
+        {
+            "start": 100,
+            "duration": 105
+        },
+        {
+            "start": 400,
+            "duration": 105
+        },
+        {
+            "start": 500,
+            "duration": 105
+        },
+        {
+            "start": 530,
+            "duration": 105
+        },
+        {
+            "start": 600,
+            "duration": 105
+        },
+        {
+            "start": 630,
+            "duration": 105
+        },
+        {
+            "start": 700,
+            "duration": 105
+        },
+        {
+            "start": 730,
+            "duration": 105
+        },
+        {
+            "start": 800,
+            "duration": 105
+        },
+        {
+            "start": 830,
+            "duration": 105
+        },
+        {
+            "start": 900,
+            "duration": 105
+        },
+        {
+            "start": 930,
+            "duration": 105
+        },
+        {
+            "start": 1000,
+            "duration": 105
+        },
+        {
+            "start": 1030,
+            "duration": 105
+        },
+        {
+            "start": 1100,
+            "duration": 105
+        },
+        {
+            "start": 1130,
+            "duration": 105
+        },
+        {
+            "start": 1230,
+            "duration": 105
+        },
+        {
+            "start": 1300,
+            "duration": 105
+        },
+        {
+            "start": 1330,
+            "duration": 105
+        },
+        {
+            "start": 1415,
+            "duration": 105
+        },
+        {
+            "start": 1445,
+            "duration": 105
+        },
+        {
+            "start": 1515,
+            "duration": 105
+        },
+        {
+            "start": 1545,
+            "duration": 105
+        },
+        {
+            "start": 1615,
+            "duration": 105
+        },
+        {
+            "start": 1645,
+            "duration": 105
+        },
+        {
+            "start": 1715,
+            "duration": 105
+        },
+        {
+            "start": 1745,
+            "duration": 105
+        },
+        {
+            "start": 1815,
+            "duration": 105
+        },
+        {
+            "start": 1845,
+            "duration": 105
+        },
+        {
+            "start": 1905,
+            "duration": 105
+        },
+        {
+            "start": 1930,
+            "duration": 105
+        },
+        {
+            "start": 2000,
+            "duration": 105
+        },
+        {
+            "start": 2030,
+            "duration": 105
+        },
+        {
+            "start": 2100,
+            "duration": 105
+        },
+        {
+            "start": 2130,
+            "duration": 105
+        },
+        {
+            "start": 2200,
+            "duration": 105
+        },
+        {
+            "start": 2230,
+            "duration": 105
+        },
+        {
+            "start": 2300,
+            "duration": 105
+        }
+    ],
+    "KIA-14 DOWN": [
+        {
+            "start": 25,
+            "duration": 110
+        },
+        {
+            "start": 110,
+            "duration": 110
+        },
+        {
+            "start": 140,
+            "duration": 110
+        },
+        {
+            "start": 230,
+            "duration": 110
+        },
+        {
+            "start": 320,
+            "duration": 110
+        },
+        {
+            "start": 340,
+            "duration": 110
+        },
+        {
+            "start": 410,
+            "duration": 110
+        },
+        {
+            "start": 430,
+            "duration": 110
+        },
+        {
+            "start": 450,
+            "duration": 110
+        },
+        {
+            "start": 520,
+            "duration": 110
+        },
+        {
+            "start": 550,
+            "duration": 110
+        },
+        {
+            "start": 620,
+            "duration": 110
+        },
+        {
+            "start": 655,
+            "duration": 110
+        },
+        {
+            "start": 720,
+            "duration": 110
+        },
+        {
+            "start": 745,
+            "duration": 110
+        },
+        {
+            "start": 805,
+            "duration": 110
+        },
+        {
+            "start": 830,
+            "duration": 110
+        },
+        {
+            "start": 900,
+            "duration": 110
+        },
+        {
+            "start": 930,
+            "duration": 110
+        },
+        {
+            "start": 950,
+            "duration": 110
+        },
+        {
+            "start": 1015,
+            "duration": 110
+        },
+        {
+            "start": 1050,
+            "duration": 110
+        },
+        {
+            "start": 1125,
+            "duration": 110
+        },
+        {
+            "start": 1155,
+            "duration": 110
+        },
+        {
+            "start": 1230,
+            "duration": 110
+        },
+        {
+            "start": 1300,
+            "duration": 110
+        },
+        {
+            "start": 1340,
+            "duration": 110
+        },
+        {
+            "start": 1420,
+            "duration": 110
+        },
+        {
+            "start": 1450,
+            "duration": 110
+        },
+        {
+            "start": 1520,
+            "duration": 110
+        },
+        {
+            "start": 1550,
+            "duration": 110
+        },
+        {
+            "start": 1610,
+            "duration": 110
+        },
+        {
+            "start": 1630,
+            "duration": 110
+        },
+        {
+            "start": 1710,
+            "duration": 110
+        },
+        {
+            "start": 1740,
+            "duration": 110
+        },
+        {
+            "start": 1800,
+            "duration": 110
+        },
+        {
+            "start": 1820,
+            "duration": 110
+        },
+        {
+            "start": 1840,
+            "duration": 110
+        },
+        {
+            "start": 1900,
+            "duration": 110
+        },
+        {
+            "start": 1920,
+            "duration": 110
+        },
+        {
+            "start": 1940,
+            "duration": 110
+        },
+        {
+            "start": 2010,
+            "duration": 110
+        },
+        {
+            "start": 2040,
+            "duration": 110
+        },
+        {
+            "start": 2110,
+            "duration": 110
+        },
+        {
+            "start": 2140,
+            "duration": 110
+        },
+        {
+            "start": 2220,
+            "duration": 110
+        },
+        {
+            "start": 2250,
+            "duration": 110
+        },
+        {
+            "start": 2345,
+            "duration": 110
+        }
+    ],
+    "KIA-14 UP": [
+        {
+            "start": 135,
+            "duration": 110
+        },
+        {
+            "start": 300,
+            "duration": 110
+        },
+        {
+            "start": 330,
+            "duration": 110
+        },
+        {
+            "start": 400,
+            "duration": 110
+        },
+        {
+            "start": 420,
+            "duration": 110
+        },
+        {
+            "start": 440,
+            "duration": 110
+        },
+        {
+            "start": 510,
+            "duration": 110
+        },
+        {
+            "start": 530,
+            "duration": 110
+        },
+        {
+            "start": 550,
+            "duration": 110
+        },
+        {
+            "start": 610,
+            "duration": 110
+        },
+        {
+            "start": 630,
+            "duration": 110
+        },
+        {
+            "start": 650,
+            "duration": 110
+        },
+        {
+            "start": 710,
+            "duration": 110
+        },
+        {
+            "start": 730,
+            "duration": 110
+        },
+        {
+            "start": 750,
+            "duration": 110
+        },
+        {
+            "start": 810,
+            "duration": 110
+        },
+        {
+            "start": 840,
+            "duration": 110
+        },
+        {
+            "start": 910,
+            "duration": 110
+        },
+        {
+            "start": 940,
+            "duration": 110
+        },
+        {
+            "start": 1010,
+            "duration": 110
+        },
+        {
+            "start": 1030,
+            "duration": 110
+        },
+        {
+            "start": 1050,
+            "duration": 110
+        },
+        {
+            "start": 1110,
+            "duration": 110
+        },
+        {
+            "start": 1140,
+            "duration": 110
+        },
+        {
+            "start": 1210,
+            "duration": 110
+        },
+        {
+            "start": 1245,
+            "duration": 110
+        },
+        {
+            "start": 1330,
+            "duration": 110
+        },
+        {
+            "start": 1400,
+            "duration": 110
+        },
+        {
+            "start": 1420,
+            "duration": 110
+        },
+        {
+            "start": 1500,
+            "duration": 110
+        },
+        {
+            "start": 1530,
+            "duration": 110
+        },
+        {
+            "start": 1550,
+            "duration": 110
+        },
+        {
+            "start": 1610,
+            "duration": 110
+        },
+        {
+            "start": 1630,
+            "duration": 110
+        },
+        {
+            "start": 1650,
+            "duration": 110
+        },
+        {
+            "start": 1710,
+            "duration": 110
+        },
+        {
+            "start": 1730,
+            "duration": 110
+        },
+        {
+            "start": 1750,
+            "duration": 110
+        },
+        {
+            "start": 1820,
+            "duration": 110
+        },
+        {
+            "start": 1850,
+            "duration": 110
+        },
+        {
+            "start": 1910,
+            "duration": 110
+        },
+        {
+            "start": 1930,
+            "duration": 110
+        },
+        {
+            "start": 2000,
+            "duration": 110
+        },
+        {
+            "start": 2020,
+            "duration": 110
+        },
+        {
+            "start": 2040,
+            "duration": 110
+        },
+        {
+            "start": 2100,
+            "duration": 110
+        },
+        {
+            "start": 2130,
+            "duration": 110
+        },
+        {
+            "start": 2200,
+            "duration": 110
+        },
+        {
+            "start": 2240,
+            "duration": 110
+        },
+        {
+            "start": 2340,
+            "duration": 110
+        }
+    ],
+    "KIA-15 DOWN": [
+        {
+            "start": 30,
+            "duration": 105
+        },
+        {
+            "start": 430,
+            "duration": 105
+        },
+        {
+            "start": 615,
+            "duration": 105
+        },
+        {
+            "start": 710,
+            "duration": 105
+        },
+        {
+            "start": 815,
+            "duration": 105
+        },
+        {
+            "start": 915,
+            "duration": 105
+        },
+        {
+            "start": 940,
+            "duration": 105
+        },
+        {
+            "start": 1015,
+            "duration": 105
+        },
+        {
+            "start": 1115,
+            "duration": 105
+        },
+        {
+            "start": 1220,
+            "duration": 105
+        },
+        {
+            "start": 1250,
+            "duration": 105
+        },
+        {
+            "start": 1315,
+            "duration": 105
+        },
+        {
+            "start": 1545,
+            "duration": 105
+        },
+        {
+            "start": 1645,
+            "duration": 105
+        },
+        {
+            "start": 1715,
+            "duration": 105
+        },
+        {
+            "start": 1745,
+            "duration": 105
+        },
+        {
+            "start": 1845,
+            "duration": 105
+        },
+        {
+            "start": 1945,
+            "duration": 105
+        }
+    ],
+    "KIA-15 UP": [
+        {
+            "start": 230,
+            "duration": 105
+        },
+        {
+            "start": 415,
+            "duration": 105
+        },
+        {
+            "start": 515,
+            "duration": 105
+        },
+        {
+            "start": 615,
+            "duration": 105
+        },
+        {
+            "start": 715,
+            "duration": 105
+        },
+        {
+            "start": 740,
+            "duration": 105
+        },
+        {
+            "start": 820,
+            "duration": 105
+        },
+        {
+            "start": 920,
+            "duration": 105
+        },
+        {
+            "start": 1020,
+            "duration": 105
+        },
+        {
+            "start": 1045,
+            "duration": 105
+        },
+        {
+            "start": 1115,
+            "duration": 105
+        },
+        {
+            "start": 1145,
+            "duration": 105
+        },
+        {
+            "start": 1325,
+            "duration": 105
+        },
+        {
+            "start": 1440,
+            "duration": 105
+        },
+        {
+            "start": 1510,
+            "duration": 105
+        },
+        {
+            "start": 1530,
+            "duration": 105
+        },
+        {
+            "start": 1630,
+            "duration": 105
+        },
+        {
+            "start": 1725,
+            "duration": 105
+        },
+        {
+            "start": 1740,
+            "duration": 105
+        },
+        {
+            "start": 1840,
+            "duration": 105
+        },
+        {
+            "start": 1940,
+            "duration": 105
+        },
+        {
+            "start": 2050,
+            "duration": 105
+        },
+        {
+            "start": 2150,
+            "duration": 105
+        },
+        {
+            "start": 2230,
+            "duration": 105
+        }
+    ],
+    "KIA-15A DOWN": [
+        {
+            "start": 1410,
+            "duration": 120
+        },
+        {
+            "start": 2015,
+            "duration": 120
+        },
+        {
+            "start": 2115,
+            "duration": 120
+        },
+        {
+            "start": 2145,
+            "duration": 120
+        },
+        {
+            "start": 2240,
+            "duration": 120
+        },
+        {
+            "start": 2345,
+            "duration": 120
+        }
+    ],
+    "KIA-17 DOWN": [
+        {
+            "start": 440,
+            "duration": 120
+        },
+        {
+            "start": 715,
+            "duration": 120
+        },
+        {
+            "start": 905,
+            "duration": 120
+        },
+        {
+            "start": 940,
+            "duration": 120
+        },
+        {
+            "start": 1510,
+            "duration": 120
+        },
+        {
+            "start": 1745,
+            "duration": 120
+        },
+        {
+            "start": 1850,
+            "duration": 120
+        },
+        {
+            "start": 1935,
+            "duration": 120
+        }
+    ],
+    "KIA-17 UP": [
+        {
+            "start": 710,
+            "duration": 120
+        },
+        {
+            "start": 940,
+            "duration": 120
+        },
+        {
+            "start": 1130,
+            "duration": 120
+        },
+        {
+            "start": 1205,
+            "duration": 120
+        },
+        {
+            "start": 1735,
+            "duration": 120
+        },
+        {
+            "start": 2000,
+            "duration": 120
+        },
+        {
+            "start": 2110,
+            "duration": 120
+        },
+        {
+            "start": 2200,
+            "duration": 120
+        }
+    ]
+}

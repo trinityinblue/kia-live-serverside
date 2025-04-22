@@ -1,14 +1,15 @@
-## KIA - Live Update Service 
+## KIA-Live Serverside
 #### Takes data from BMTC APIs to provide a semi-live data feed
 
 - ### Setup:
 This is expected to be functioning on an AWS EC2 Instance, however it can technically run anywhere. To set it up first install all dependents
 via the poetry package manager `poetry install` command. Once installed you can simply run it via 
-`poetry run python main.py`. To expose it you can use an nginx reverse proxy, or alternatively modify the source code to
-expose flask properly. It will run on port `59955` to avoid conflicts with other services.
+`poetry run python src/main.py` from the `src` folder. To expose it you can use an nginx reverse proxy, or cloudflared type tunnelling service. It will run on port `59966` to avoid conflicts with other services.
 
+*The old.py script runs on port 59955*
 - ### Data:
-Data is returned in the following JSON format
+Data is returned in the GTFS/GTFS-RT standard format.
+Alternatively the python script called old.py returns this internal data structure previously used.
 ```json
 {"<ROUTE_NO_WITH_DIRECTION>": 
   {
@@ -78,4 +79,4 @@ So a sample would look like:
 ```
 You will notice in the above example that even though it is for `KIA-5D DOWN` there is a value with the direction `UP`
 This is because of inaccurate data received from BMTC API. It is better to track whether it is `UP` or `DOWN` via the 
-destination value
+destination value, This is not an issue in the `src/main.py` as it uses GTFS standards and correctly maps trips to live vehicles.
