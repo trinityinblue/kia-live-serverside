@@ -14,7 +14,7 @@ from flask import Flask, jsonify
 import traceback
 
 # Read only constants
-with open('client_stops.json') as f:
+with open('in/helpers/construct_stops/client_stops.json') as f:
     ALL_BUSES_STOPS = json.load(f)
 
 stop_names = {key: [stop['name'] for stop in route['stops']] for key, route in ALL_BUSES_STOPS.items()}
@@ -33,12 +33,12 @@ end = 'END_LOOP_QUEUE'  # Terminator for threaded operations
 # Query the route every 30 seconds till we stop getting data
 # ~Update received data to Amazon DB~ Serve fresh data for clients to interact with via flask (Perhaps shift to a
 # different option should demand increase)
-with open('routes_children_ids.json') as f:
+with open('in/routes_children_ids.json') as f:
     ALL_ROUTES_CHILDREN_IDS = json.load(f)
 
 routes_children = ALL_ROUTES_CHILDREN_IDS  # All routes
 
-with open('routes_ids.json') as f:
+with open('in/routes_ids.json') as f:
     ALL_ROUTES_IDS = json.load(f)
 
 routes = ALL_ROUTES_IDS  # All routes
