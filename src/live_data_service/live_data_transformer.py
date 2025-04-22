@@ -2,8 +2,10 @@ from google.transit import gtfs_realtime_pb2
 from datetime import datetime, timedelta
 import pytz
 
-local_tz = pytz.timezone("Asia/Kolkata")
+from src.shared import ThreadSafeDict
 
+local_tz = pytz.timezone("Asia/Kolkata")
+all_entities = ThreadSafeDict()
 
 def transform_response_to_feed_entities(api_data: list, job: dict) -> list:
     entities = []
@@ -57,8 +59,8 @@ def transform_response_to_feed_entities(api_data: list, job: dict) -> list:
     for vehicle_id, bundle in vehicle_groups.items():
         entity = build_feed_entity(bundle["vehicle"], trip_id, route_id, bundle["stops"])
         entities.append(entity)
-
-    return entities
+    all_entities[trip_id] = entities
+    return [item for a in all_entities.values() for item in a]
 
 
 def build_feed_entity(vehicle: dict, trip_id: str, route_id: str, stops: list):
