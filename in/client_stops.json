@@ -4710,8 +4710,8 @@
                 "name": "Brigade Meadows Kanakapura Road",
                 "name_kn": "Brigade Meadows Kanakapura Road",
                 "loc": [
-                    77.50685,
-                    12.81437
+                    12.81437,
+                    77.50685
                 ],
                 "stop_id": 36503,
                 "distance": 0
@@ -6384,8 +6384,8 @@
                 "name": "White Field Bus Station (Vydehi Hospital)",
                 "name_kn": "White Field Bus Station (Vydehi Hospital)",
                 "loc": [
-                    77.72693,
-                    12.9774
+                    12.9774,
+                    77.72693
                 ],
                 "stop_id": 23656,
                 "distance": 0
@@ -10513,8 +10513,8 @@
                 "name": "Sarjapura Wipro Campus",
                 "name_kn": "Sarjapura Wipro Campus",
                 "loc": [
-                    77.71354,
-                    12.89903
+                    12.89903,
+                    77.71354
                 ],
                 "stop_id": 34475,
                 "distance": 62
@@ -10528,8 +10528,8 @@
                 "name": "Sarjapura Wipro Campus",
                 "name_kn": "Sarjapura Wipro Campus",
                 "loc": [
-                    77.71369,
-                    12.89886
+                    12.89886,
+                    77.71369
                 ],
                 "stop_id": 28169,
                 "distance": 0

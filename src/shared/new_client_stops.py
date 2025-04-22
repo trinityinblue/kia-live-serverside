@@ -103,7 +103,7 @@ def update_client_stops(client_stops, api_responses_dir):
                 new_stop = {
                     'name': api_stop['stationname'],
                     'name_kn': api_stop.get('stationname', ''),
-                    'loc': [api_stop['centerlong'], api_stop['centerlat']],  # Assuming API data is [lon, lat]
+                    'loc': [api_stop['centerlat'], api_stop['centerlong']],  # Assuming API data is [lon, lat]
                     'stop_id': api_stop.get('stationid'),
                     'distance': api_stop['distance_on_station']  # You can adjust distance logic if needed
                 }
@@ -127,10 +127,10 @@ def save_updated_client_stops(updated_client_stops, output_path):
 
 def main():
     # Path to the existing client_stops.json
-    client_stops_path = '../in/stops_responses/client_stops.json'
+    client_stops_path = '../in/helpers/construct_stops/client_stops.json'
 
     # Directory where the API responses are stored
-    api_responses_dir = '../in/stops_responses/en'
+    api_responses_dir = '../in/helpers/construct_stops/api_responses'
 
     # Path where the updated client_stops.json should be saved
     output_path = '../in/client_stops.json'
