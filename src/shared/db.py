@@ -1,8 +1,7 @@
 import sqlite3
 import os
 from typing import Dict
-
-DB_PATH = os.path.join(os.path.dirname(__file__), "../../db/live_data.db")
+from src.shared.config import DB_PATH
 
 def get_connection():
     return sqlite3.connect(DB_PATH)

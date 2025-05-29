@@ -8,7 +8,7 @@ from src.local_file_service.gtfs_builder import build_gtfs_dataset
 from src.shared import new_client_stops, timings_tsv
 from src.shared.utils import load_gtfs_zip, load_input_data, data_has_changed, zip_gtfs_data
 import src.shared as rt_state
-
+from src.shared.config import TSV_PATH, JSON_PATH
 
 IN_DIR = '../in'
 OUT_DIR = '../out'
@@ -19,10 +19,7 @@ def process_once():
     # Load current input files
     print("Updating input data...")
 
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    tsv_path = os.path.join(BASE_DIR, 'in/helpers/construct_timings/timings.tsv')
-    json_path = os.path.join(BASE_DIR, 'in/start_times.json')
-    timings_tsv.process_tsv_to_json(tsv_path, json_path)
+    timings_tsv.process_tsv_to_json(TSV_PATH, JSON_PATH)
 
     new_client_stops.main()
     print("Loading input data...")
