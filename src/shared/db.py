@@ -10,17 +10,17 @@ def initialize_database():
     with get_connection() as conn:
         c = conn.cursor()
         c.execute('''
-            CREATE TABLE IF NOT EXISTS vehicle_positions (
+            CREATE TABLE IF NOT EXISTS completed_stop_times (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                vehicle_id TEXT,
+                stop_id TEXT,
                 trip_id TEXT,
                 route_id TEXT,
-                lat REAL,
-                lon REAL,
-                timestamp INTEGER,
-                speed REAL,
-                stop_id TEXT,
-                status TEXT
+                date TEXT,
+                actual_arrival TEXT,
+                actual_departure TEXT,
+                scheduled_arrival TEXT,
+                scheduled_departure TEXT,
+                UNIQUE(stop_id, trip_id, date)
             )
         ''')
         conn.commit()
@@ -28,21 +28,24 @@ def initialize_database():
 def insert_vehicle_data(data: Dict):
     with get_connection() as conn:
         c = conn.cursor()
-        c.execute('''
-            INSERT INTO vehicle_positions (
-                vehicle_id, trip_id, route_id, lat, lon,
-                timestamp, speed, stop_id, status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            data.get("vehicle_id"),
-            data.get("trip_id"),
-            data.get("route_id"),
-            data.get("lat"),
-            data.get("lon"),
-            data.get("timestamp"),
-            data.get("speed"),
-            data.get("stop_id"),
-            data.get("status"),
-        ))
-        conn.commit()
+        try:
+            c.execute('''
+                INSERT OR IGNORE INTO completed_stop_times (
+                    stop_id, trip_id, route_id, date,
+                    actual_arrival, actual_departure,
+                    scheduled_arrival, scheduled_departure
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                data["stop_id"],
+                data["trip_id"],
+                data["route_id"],
+                data["date"],
+                data["actual_arrival"],
+                data["actual_departure"],
+                data["scheduled_arrival"],
+                data["scheduled_departure"]
+            ))
+            conn.commit()
+        except Exception as e:
+            print(f"Error inserting data for stop_id={data['stop_id']}, trip_id={data['trip_id']}: {e}")
 
