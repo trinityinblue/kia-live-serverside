@@ -6,7 +6,7 @@ from src.live_data_service.live_data_getter import fetch_route_data
 from src.live_data_service.live_data_transformer import transform_response_to_feed_entities
 from src.live_data_service.feed_entity_updater import update_feed_message
 from src.shared.utils import generate_trip_id_timing_map
-from src.shared.db import insert_vehicle_data
+
 
 # Set of active parent_ids currently being polled
 active_parents = set()
@@ -58,21 +58,6 @@ async def poll_route_parent_until_done(parent_id: int):
             print(f"[Polling] [{datetime.now().strftime('%d-%m %H:%M:%S')}] No data for parent_id={parent_id}")
             empty_tries += 1
         else:
-            if "vehicles" in data:
-                for vehicle in data["vehicles"]:
-                    vehicle_record = {
-                        "vehicle_id": vehicle.get("id"),
-                        "trip_id": vehicle.get("trip_id"),
-                        "route_id": vehicle.get("route_id"),
-                        "lat": vehicle.get("latitude"),
-                        "lon": vehicle.get("longitude"),
-                        "timestamp": vehicle.get("timestamp"),
-                        "speed": vehicle.get("speed"),
-                        "stop_id": vehicle.get("stop_id"),
-                        "status": vehicle.get("status"),
-                    }
-                    insert_vehicle_data(vehicle_record)
-
             matching_jobs = []
             for route_key, child_id in child_routes.items():
                 if routes_parent.get(route_key) != parent_id:
