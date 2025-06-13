@@ -101,7 +101,6 @@ def build_feed_entity(vehicle: dict, trip_id: str, route_id: str, stops: list):
     if last_stop.get("actual_arrivaltime") and last_stop.get("actual_departuretime"):
         for stop in stops:
             if not stop.get("actual_arrivaltime") or not stop.get("actual_departuretime"):
-                print("[DEBUG]!!! build_feed_entity called")
                 continue  # only save fully completed stops
 
             insert_vehicle_data({

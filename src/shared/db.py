@@ -7,6 +7,9 @@ def get_connection():
     return sqlite3.connect(DB_PATH)
 
 def initialize_database():
+    # Ensure the directory for the database exists
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    
     with get_connection() as conn:
         c = conn.cursor()
         c.execute('''

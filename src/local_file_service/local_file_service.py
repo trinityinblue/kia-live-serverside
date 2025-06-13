@@ -8,11 +8,7 @@ from src.local_file_service.gtfs_builder import build_gtfs_dataset
 from src.shared import new_client_stops, timings_tsv
 from src.shared.utils import load_gtfs_zip, load_input_data, data_has_changed, zip_gtfs_data
 import src.shared as rt_state
-from src.shared.config import TSV_PATH, JSON_PATH
-
-IN_DIR = './in'
-OUT_DIR = './out'
-OUT_ZIP = os.path.join(OUT_DIR, 'gtfs.zip')
+from src.shared.config import TSV_PATH, JSON_PATH, IN_DIR, OUT_DIR, OUT_ZIP
 
 
 def process_once():
