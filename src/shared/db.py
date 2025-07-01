@@ -26,7 +26,22 @@ def initialize_database():
                 UNIQUE(stop_id, trip_id, date)
             )
         ''')
+        # Table for vehicle positions over time
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS vehicle_positions (
+                trip_id TEXT,
+                vehicle_id TEXT,
+                route_id TEXT,
+                latitude REAL,
+                longitude REAL,
+                timestamp INTEGER,
+                PRIMARY KEY (trip_id, timestamp)
+            )
+        ''')
         conn.commit()
+
+
+    
 
 def insert_vehicle_data(data: Dict):
     with get_connection() as conn:
@@ -51,4 +66,18 @@ def insert_vehicle_data(data: Dict):
             conn.commit()
         except Exception as e:
             print(f"Error inserting data for stop_id={data['stop_id']}, trip_id={data['trip_id']}: {e}")
+
+
+def insert_vehicle_position(trip_id, vehicle_id, route_id, lat, lon, timestamp):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        try:
+            cursor.execute("""
+                INSERT OR IGNORE INTO vehicle_positions (
+                    trip_id, vehicle_id, route_id, latitude, longitude, timestamp
+                ) VALUES (?, ?, ?, ?, ?, ?)
+            """, (trip_id, vehicle_id, route_id, lat, lon, timestamp))
+        except Exception as e:
+            print(f"[DB] insert_vehicle_position error: {e}")
+
 

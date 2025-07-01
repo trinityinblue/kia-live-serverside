@@ -1,7 +1,7 @@
 from google.transit import gtfs_realtime_pb2
 from datetime import datetime, timedelta
 import pytz
-from src.shared.db import insert_vehicle_data
+from src.shared.db import insert_vehicle_data, insert_vehicle_position
 from datetime import date
 
 
@@ -123,6 +123,17 @@ def build_feed_entity(vehicle: dict, trip_id: str, route_id: str, stops: list):
     vehicle_position.position.longitude = float(vehicle.get("centerlong", 0.0))
     vehicle_position.position.bearing = float(vehicle.get("heading", 0.0))
     vehicle_position.timestamp = int(datetime.strptime(vehicle['lastrefreshon'], '%d-%m-%Y %H:%M:%S').timestamp())
+    
+    insert_vehicle_position(
+        trip_id=trip_id,
+        vehicle_id=str(vehicle["vehicleid"]),
+        route_id=str(route_id),
+        lat=float(vehicle.get("centerlat", 0.0)),
+        lon=float(vehicle.get("centerlong", 0.0)),
+        timestamp=int(datetime.strptime(vehicle['lastrefreshon'], '%d-%m-%Y %H:%M:%S').timestamp())
+    )
+
+    
     return entity
 
 
